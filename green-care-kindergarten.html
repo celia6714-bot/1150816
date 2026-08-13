@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自然的處方箋｜Green Prescription × Green Care 幼兒園備課手冊</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root{
+  --paper:#ECEBDC;
+  --paper-soft:#F6F5EA;
+  --ink:#1F2A22;
+  --ink-soft:#3E4A40;
+  --forest:#24463A;
+  --forest-deep:#163026;
+  --sage:#7C9473;
+  --sage-pale:#C6D2BC;
+  --ochre:#B8862E;
+  --ochre-soft:#E7C77E;
+  --clay:#8C5A3C;
+  --clay-soft:#D9BBA3;
+  --sky:#4F7E88;
+  --sky-soft:#BFD6D9;
+  --berry:#AD5459;
+  --berry-soft:#E3BFC0;
+  --line: rgba(31,42,34,0.16);
+  --line-strong: rgba(31,42,34,0.32);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans TC','Noto Sans',sans-serif;
+  font-weight:400;
+  font-size:17.5px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:'Noto Serif TC','Noto Serif',serif;
+  color:var(--forest-deep);
+  margin:0;
+  letter-spacing:.02em;
+  text-wrap:balance;
+}
+p{margin:0;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+.icon{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none;}
+
+/* ---------- badge / sticker ---------- */
+.badge{
+  width:46px;height:46px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex:none; position:relative;
+  box-shadow: 0 3px 0 rgba(31,42,34,0.15);
+}
+.badge .icon{width:24px;height:24px; stroke:var(--paper-soft); stroke-width:1.7;}
+.badge.sm{width:30px;height:30px;border-radius:10px;}
+.badge.sm .icon{width:16px;height:16px;}
+.badge.rot-l{transform:rotate(-5deg);}
+.badge.rot-r{transform:rotate(5deg);}
+.badge-forest{background:var(--forest);}
+.badge-ochre{background:var(--ochre);}
+.badge-sage{background:var(--sage);}
+.badge-clay{background:var(--clay);}
+.badge-sky{background:var(--sky);}
+.badge-berry{background:var(--berry);}
+
+/* ---------- top texture ---------- */
+.field-lines{
+  position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+  background-image: repeating-linear-gradient(180deg, transparent 0 38px, rgba(31,42,34,0.035) 38px 39px);
+}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(236,235,220,0.94);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:15px 28px;
+  display:flex; align-items:center; gap:22px; overflow-x:auto;
+}
+.nav-brand{
+  font-family:'Noto Serif TC',serif; font-weight:700; font-size:16.5px; color:var(--forest-deep);
+  white-space:nowrap; padding-right:8px; border-right:1px solid var(--line-strong);
+}
+.nav-links{display:flex; gap:19px; white-space:nowrap;}
+.nav-links a{
+  font-size:14.5px; color:var(--ink-soft); text-decoration:none; letter-spacing:.03em;
+  padding:4px 2px; border-bottom:1px solid transparent;
+}
+.nav-links a:hover{border-bottom-color:var(--ochre); color:var(--forest-deep);}
+
+/* ---------- hero ---------- */
+header.hero{
+  position:relative; z-index:1;
+  padding:100px 0 84px;
+  overflow:hidden;
+}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.14em;
+  color:var(--forest); text-transform:uppercase;
+  border:1px solid var(--line-strong); border-radius:99px; padding:7px 16px;
+  background:var(--paper-soft);
+}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ochre);display:inline-block;}
+h1.hero-title{
+  margin-top:26px; font-size:clamp(36px,5.6vw,62px); font-weight:900; line-height:1.32;
+  color:var(--forest-deep); max-width:820px;
+}
+h1.hero-title em{ font-style:normal; color:var(--ochre); position:relative; }
+.hero-sub{ margin-top:24px; max-width:620px; font-size:18px; color:var(--ink-soft); }
+.hero-meta{ margin-top:38px; display:flex; gap:14px; flex-wrap:wrap; }
+.hero-meta span{
+  font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--forest);
+  background:var(--sage-pale); border-radius:6px; padding:7px 13px;
+}
+
+.deco{position:absolute; pointer-events:none; display:none;}
+@media(min-width:920px){.deco{display:block;}}
+.deco-sun{top:6px; right:400px; width:56px; height:56px; color:var(--ochre); opacity:.85; transform:rotate(-4deg);}
+.deco-cloud{top:36px; right:470px; width:64px; height:64px; color:var(--sky); opacity:.55;}
+.deco-ladybug{top:210px; left:520px; width:26px; height:26px; color:var(--berry); opacity:.85; transform:rotate(8deg);}
+.deco-footprints{top:255px; left:430px; width:120px; height:40px; color:var(--sage); opacity:.5; transform:rotate(-6deg);}
+
+.rx-float{
+  position:absolute; right:-10px; top:64px; width:290px;
+  background:var(--paper-soft); border:1.5px solid var(--line-strong); border-radius:8px;
+  padding:22px 22px 26px; transform:rotate(4deg);
+  box-shadow: 0 18px 40px rgba(22,48,38,0.14);
+  display:none;
+}
+.rx-float .rx-head{display:flex; justify-content:space-between; align-items:baseline; border-bottom:1.5px dashed var(--line-strong); padding-bottom:10px; margin-bottom:12px;}
+.rx-float .rx-head b{font-family:'Noto Serif TC',serif; color:var(--forest-deep); font-size:16px;}
+.rx-float .rx-head span{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--clay);}
+.rx-float ul{margin:0;padding:0;list-style:none; font-size:13.5px; color:var(--ink-soft);}
+.rx-float li{padding:6px 0; border-bottom:1px dotted var(--line); display:flex; align-items:center; gap:9px;}
+.rx-float li:last-child{border-bottom:none;}
+.rx-float .badge.sm{box-shadow:none;}
+.rx-float .stamp{
+  position:absolute; bottom:-16px; right:18px; width:64px; height:64px; border-radius:50%;
+  border:2px solid var(--ochre); color:var(--ochre); display:flex; align-items:center; justify-content:center;
+  font-family:'Noto Serif TC',serif; font-weight:700; font-size:12.5px; transform:rotate(-14deg);
+  background:var(--paper-soft);
+}
+@media(min-width:920px){.rx-float{display:block;}}
+
+/* ---------- section shell ---------- */
+section{position:relative; z-index:1; padding:80px 0;}
+.section-alt{background:var(--paper-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.eyebrow-row{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.num-tag{
+  font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--paper-soft);
+  background:var(--forest); border-radius:99px; width:32px;height:32px;
+  display:flex; align-items:center; justify-content:center; flex:none;
+}
+.eyebrow-text{font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.12em; color:var(--clay); text-transform:uppercase;}
+h2.section-title{font-size:clamp(27px,3.5vw,40px); font-weight:700; max-width:720px; line-height:1.44;}
+.section-lede{margin-top:16px; max-width:700px; font-size:16.5px; color:var(--ink-soft);}
+
+.intro-block{max-width:780px;}
+.intro-block p + p{margin-top:14px;}
+
+/* ---------- rx cards ---------- */
+.rx-grid{ margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+.rx-card{
+  background:var(--paper-soft); border:1px solid var(--line-strong); border-radius:10px;
+  padding:26px 24px; position:relative; border-top:4px solid var(--forest);
+}
+.rx-card .rx-icon-row{display:flex; align-items:center; gap:14px;}
+.rx-card .rx-en{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.08em; color:var(--sage); text-transform:uppercase;}
+.rx-card h4{margin-top:12px; font-size:20px; color:var(--forest-deep);}
+.rx-card p{margin-top:11px; font-size:15px; color:var(--ink-soft);}
+.rx-card .rx-dash{border-top:1.5px dashed var(--line-strong); margin-top:16px; padding-top:14px;}
+
+/* ---------- quadrant ---------- */
+.quad-wrap{margin-top:44px; display:grid; grid-template-columns: 1.1fr 1.5fr; gap:40px; align-items:start;}
+@media(max-width:820px){.quad-wrap{grid-template-columns:1fr;}}
+.quad-def{ font-size:16px; color:var(--ink-soft); background:var(--paper); border-left:3px solid var(--ochre); padding:20px 22px; border-radius:6px; }
+.quad-def b{color:var(--forest-deep); font-family:'Noto Serif TC',serif;}
+.quad-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line-strong); border:1px solid var(--line-strong); border-radius:10px; overflow:hidden; }
+.quad-cell{ background:var(--paper-soft); padding:28px 24px; min-height:170px; position:relative; }
+.quad-cell .qc-top{display:flex; align-items:center; gap:12px;}
+.quad-cell .qc-stamp{
+  font-family:'Noto Serif TC',serif; font-weight:700; font-size:12.5px; color:var(--ink-soft);
+}
+.quad-cell h4{margin-top:14px; font-size:18px;}
+.quad-cell p{margin-top:9px; font-size:14.5px; color:var(--ink-soft);}
+
+/* ---------- compare table ---------- */
+.compare{margin-top:40px; width:100%; border-collapse:collapse; font-size:15.5px;}
+.compare th,.compare td{border:1px solid var(--line-strong); padding:18px 20px; text-align:left; vertical-align:top;}
+.compare thead th{ background:var(--forest); color:var(--paper-soft); font-family:'Noto Serif TC',serif; font-weight:600; font-size:16px; }
+.compare tbody th{ background:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--clay); font-weight:500; width:160px; }
+.compare td{color:var(--ink-soft); background:var(--paper-soft);}
+.compare-scroll{overflow-x:auto;}
+
+/* ---------- domain chips ---------- */
+.domain-grid{margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;}
+.domain-card{background:var(--paper-soft); border:1px solid var(--line); border-radius:10px; padding:22px;}
+.domain-card .dc-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--sage); letter-spacing:.08em; margin-top:12px; display:block;}
+.domain-card h4{margin-top:6px; font-size:17px;}
+.domain-card p{margin-top:9px; font-size:14.5px; color:var(--ink-soft);}
+
+/* ---------- international section ---------- */
+.country-grid{margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px;}
+.country-card{ background:var(--paper-soft); border:1px solid var(--line-strong); border-radius:10px; padding:24px; border-top:4px solid var(--clay); }
+.country-card .cc-top{display:flex; justify-content:space-between; align-items:center;}
+.country-card .cc-year{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--clay);}
+.country-card h4{margin-top:14px; font-size:19px;}
+.country-card p{margin-top:10px; font-size:14.5px; color:var(--ink-soft);}
+
+.timeline{ margin-top:56px; position:relative; padding-top:10px;}
+.timeline-track{ display:flex; gap:0; overflow-x:auto; padding-bottom:18px; scrollbar-width:thin; }
+.timeline-node{ flex:0 0 auto; width:190px; position:relative; padding:0 14px 0 0; }
+.timeline-node .tn-line{ height:3px; background:var(--sage); position:relative; margin-bottom:22px; }
+.timeline-node .tn-line .badge{ position:absolute; top:-15px; left:0; }
+.timeline-node .tn-year{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ochre); font-weight:600;}
+.timeline-node h5{font-family:'Noto Serif TC',serif; font-size:15.5px; color:var(--forest-deep); margin-top:6px; font-weight:600;}
+.timeline-node p{margin-top:6px; font-size:13px; color:var(--ink-soft); line-height:1.6;}
+
+/* ---------- activity ideas ---------- */
+.idea-block{margin-top:48px;}
+.idea-block + .idea-block{margin-top:34px;}
+.idea-head{display:flex; align-items:center; gap:14px; margin-bottom:16px; flex-wrap:wrap;}
+.idea-head h4{font-size:19.5px; color:var(--forest-deep);}
+.idea-head span.mono{font-size:12px; color:var(--clay);}
+.idea-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px;}
+.idea-card{ background:var(--paper-soft); border:1px solid var(--line); border-radius:10px; padding:20px 22px; }
+.idea-card p{font-size:15px; color:var(--ink-soft);}
+.age-tags{margin-top:13px; display:flex; gap:6px; flex-wrap:wrap;}
+.age-tags span{font-family:'IBM Plex Mono',monospace; font-size:11.5px; background:var(--sage-pale); color:var(--forest-deep); padding:4px 10px; border-radius:99px;}
+
+/* ---------- checklist table ---------- */
+.check-table{margin-top:40px; width:100%; border-collapse:collapse; font-size:15.5px;}
+.check-table th,.check-table td{border-bottom:1px solid var(--line-strong); padding:18px 8px; text-align:left; vertical-align:top;}
+.check-table thead th{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--clay); text-transform:uppercase; letter-spacing:.06em; border-bottom:2px solid var(--forest);}
+.check-table td:first-child, .check-table th:first-child{width:220px; font-family:'Noto Serif TC',serif; color:var(--forest-deep); font-weight:600;}
+.check-table td{color:var(--ink-soft);}
+
+/* ---------- safety notes ---------- */
+.safety-list{margin-top:36px; display:grid; gap:14px;}
+.safety-item{display:flex; gap:16px; align-items:flex-start; padding:18px 20px; background:var(--paper); border-radius:10px; border:1px solid var(--line);}
+.safety-item p{font-size:15.5px; color:var(--ink-soft);}
+.safety-item b{color:var(--ink); font-weight:600;}
+
+/* ---------- resources ---------- */
+.res-grid{margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px;}
+.res-group h4{font-size:15px; color:var(--forest-deep); font-family:'IBM Plex Mono',monospace; letter-spacing:.05em; text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:8px;}
+.res-link{ display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--line); text-decoration:none; }
+.res-link:last-child{border-bottom:none;}
+.res-link .rl-title{font-size:15px; color:var(--ink); font-weight:500;}
+.res-link .rl-desc{font-size:13px; color:var(--ink-soft); margin-top:3px;}
+.res-link:hover .rl-title{color:var(--ochre); text-decoration:underline;}
+
+/* ---------- refs / footer ---------- */
+footer{padding:64px 0 80px; position:relative; z-index:1;}
+.refs-list{margin-top:28px; display:grid; gap:11px; max-width:780px;}
+.refs-list li{list-style:none; font-size:14.5px; color:var(--ink-soft); padding-left:18px; position:relative;}
+.refs-list li::before{content:'—'; position:absolute; left:0; color:var(--sage);}
+.foot-note{margin-top:54px; padding-top:26px; border-top:1px solid var(--line); font-size:13.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+::selection{background:var(--ochre-soft);}
+</style>
+</head>
+<body>
+<div class="field-lines"></div>
+
+<svg style="display:none">
+<defs>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4 20C4 12 9 5 20 4C19 15 12 20 4 20Z"/><path d="M4 20C8 15 12 11 18 6"/></symbol>
+<symbol id="i-paw" viewBox="0 0 24 24"><circle cx="7" cy="8" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="17" cy="8" r="2"/><path d="M12 12c-4 0-6 3-6 5.5S8 21 12 21s6-1 6-3.5S16 12 12 12Z"/></symbol>
+<symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 3 6 12h3l-4 6h5v3h4v-3h5l-4-6h3L12 3Z"/></symbol>
+<symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 19 9 8l4 6 2-3 6 8H3Z"/><circle cx="17" cy="6" r="2"/></symbol>
+<symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21V11"/><path d="M12 11C12 6 8 4 4 4c0 5 3 8 8 8Z"/><path d="M12 13C12 9 15 7 19 7c0 4.5-3 7-7 7Z"/></symbol>
+<symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 11h18a9 6 0 0 1-18 0Z"/><path d="M7 11c0-3 2-6 5-6s5 3 5 6"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9.5-9C1 7.5 3 4 6.5 4c2 0 3.7 1.2 5.5 3.5C13.8 5.2 15.5 4 17.5 4 21 4 23 7.5 21.5 11 19 15.5 12 20 12 20Z"/></symbol>
+<symbol id="i-hands" viewBox="0 0 24 24"><path d="M2 12c3-3 5-3 8 0"/><path d="M22 12c-3-3-5-3-8 0"/><path d="M9 12c1.5-1.5 4.5-1.5 6 0"/><path d="M12 8v10"/></symbol>
+<symbol id="i-field" viewBox="0 0 24 24"><path d="M3 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5Z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5Z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 5 3 7.5 7 9 4-1.5 7-4 7-9V6L12 3Z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M9 15 15 9"/><path d="M11 6l1.5-1.5a4 4 0 0 1 5.5 5.5L16 11.5"/><path d="M13 18l-1.5 1.5a4 4 0 0 1-5.5-5.5L7.5 12.5"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18"/><path d="M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4l1.4-1.4M17 7l1.4-1.4"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.5-7.97A5 5 0 0 1 16 8.5 4 4 0 0 1 17 18H7Z"/></symbol>
+<symbol id="i-ladybug" viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="6" ry="7"/><path d="M12 7V21"/><circle cx="9" cy="12" r=".8" style="fill:currentColor;stroke:none"/><circle cx="15" cy="12" r=".8" style="fill:currentColor;stroke:none"/><circle cx="9" cy="17" r=".8" style="fill:currentColor;stroke:none"/><circle cx="15" cy="17" r=".8" style="fill:currentColor;stroke:none"/><circle cx="12" cy="5" r="2.4"/></symbol>
+<symbol id="i-footprints" viewBox="0 0 24 24"><ellipse cx="8" cy="16" rx="2.4" ry="3.4"/><circle cx="6" cy="10" r=".9" style="fill:currentColor;stroke:none"/><circle cx="8" cy="9" r=".9" style="fill:currentColor;stroke:none"/><circle cx="10" cy="10" r=".9" style="fill:currentColor;stroke:none"/><ellipse cx="17" cy="10" rx="2.4" ry="3.4"/><circle cx="15" cy="16" r=".9" style="fill:currentColor;stroke:none"/><circle cx="17" cy="17" r=".9" style="fill:currentColor;stroke:none"/><circle cx="19" cy="16" r=".9" style="fill:currentColor;stroke:none"/></symbol>
+<symbol id="i-magnifier" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15.5 15.5 21 21"/></symbol>
+<symbol id="i-speech" viewBox="0 0 24 24"><path d="M4 5h16v10H9l-4 4v-4H4Z"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 7 0 0 0 0 14c1.5 0 1.5-1.5 3-1.5s1.5 1.5 3 1.5a3 3 0 0 0 3-3c0-6-4-11-9-11Z"/><circle cx="8.5" cy="10" r="1" style="fill:currentColor;stroke:none"/><circle cx="12" cy="7.5" r="1" style="fill:currentColor;stroke:none"/><circle cx="15.5" cy="10" r="1" style="fill:currentColor;stroke:none"/></symbol>
+<symbol id="i-group" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.5-6 5-6s5 2.5 5 6"/><path d="M14 20c0-2.8 1.8-5 3.5-5s3.5 2.2 3.5 5"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2.5" width="6" height="3" rx="1"/><path d="M8 11h8M8 15h8M8 19h5"/></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-4-1.5L11 7l4 2Z"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c4 5 6 8.2 6 11a6 6 0 0 1-12 0c0-2.8 2-6 6-11Z"/></symbol>
+<symbol id="i-pot" viewBox="0 0 24 24"><path d="M7 10h10l-1.5 9h-7L7 10Z"/><path d="M5 10h14"/><path d="M12 10V5c-2 0-3-1.2-3-1.2S10 2 12 2s3 1.8 3 1.8S14 5 12 5v5"/></symbol>
+</defs>
+</svg>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">自然的處方箋</div>
+    <div class="nav-links">
+      <a href="#intro">緣起</a>
+      <a href="#rx">綠色處方箋</a>
+      <a href="#care">綠色照顧</a>
+      <a href="#compare">對照</a>
+      <a href="#why">為何適用幼兒園</a>
+      <a href="#world">國際經驗</a>
+      <a href="#ideas">課程實作點子</a>
+      <a href="#checklist">備課檢核表</a>
+      <a href="#safety">安全提醒</a>
+      <a href="#resources">網路資源</a>
+      <a href="#refs">參考資料</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap" style="position:relative;">
+    <svg class="deco deco-cloud"><use href="#i-cloud"/></svg>
+    <svg class="deco deco-sun"><use href="#i-sun"/></svg>
+    <svg class="deco deco-ladybug"><use href="#i-ladybug"/></svg>
+    <svg class="deco deco-footprints"><use href="#i-footprints"/></svg>
+
+    <span class="hero-eyebrow">幼兒園自然教育備課手冊</span>
+    <h1 class="hero-title">把 <em>自然</em>，開成一張給孩子的處方箋</h1>
+    <p class="hero-sub">
+      「綠色處方箋」與「綠色照顧」原是醫療與高齡照顧領域的概念，說的是用植物、動物、農事與戶外環境來陪伴身心。這份手冊把兩個概念的定義、脈絡與四個實務面向，轉譯成 2–6 歲幼兒園課程可以直接參考的備課素材。
+    </p>
+    <div class="hero-meta">
+      <span>GREEN PRESCRIPTION</span>
+      <span>GREEN CARE</span>
+      <span>2–6 歲課程轉譯</span>
+      <span>對應教保活動課程大綱六大領域</span>
+    </div>
+
+    <div class="rx-float">
+      <div class="rx-head"><b>Rx 自然處方</b><span>KINDERGARTEN ED.</span></div>
+      <ul>
+        <li><span class="badge sm badge-forest"><svg class="icon"><use href="#i-sprout"/></svg></span>園藝治療 Horticultural</li>
+        <li><span class="badge sm badge-clay"><svg class="icon"><use href="#i-paw"/></svg></span>動物輔助療育 Animal-Assisted</li>
+        <li><span class="badge sm badge-sage"><svg class="icon"><use href="#i-tree"/></svg></span>森林療癒 Forest Therapy</li>
+        <li><span class="badge sm badge-ochre"><svg class="icon"><use href="#i-compass"/></svg></span>冒險治療 Adventure Therapy</li>
+        <li><span class="badge sm badge-sky"><svg class="icon"><use href="#i-hands"/></svg></span>綠色陪伴 Green Companionship</li>
+      </ul>
+      <div class="stamp">已備課</div>
+    </div>
+  </div>
+</header>
+
+<section id="intro">
+  <div class="wrap intro-block">
+    <div class="eyebrow-row"><span class="num-tag">00</span><span class="eyebrow-text">Background · 緣起</span></div>
+    <h2 class="section-title">為什麼幼教老師需要認識這兩個名詞</h2>
+    <p class="section-lede" style="margin-bottom:20px;">
+      近十年，醫療與長期照顧領域興起一股以自然、農業、動物、園藝作為輔助照護方式的思潮，被稱為「綠色處方箋」與「綠色照顧」。它們雖然誕生於醫院診間與農村高齡照顧現場，但核心精神—讓身心在與自然的互動中被安放、被滋養—其實與幼兒園長期在做的自然教育、食農教育、戶外遊戲高度呼應。
+    </p>
+    <p style="color:var(--ink-soft); font-size:16.5px;">
+      這份手冊不是要老師開立醫療處方，而是借用這兩套架構的邏輯：一個提供「依需求挑選活動」的處方庫思維，一個提供「經營校園自然生活圈」的四面向架構，幫助備課時更有系統地把自然元素放進課程設計裡。
+    </p>
+  </div>
+</section>
+
+<section id="rx" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">01</span><span class="eyebrow-text">Green Prescription · 綠色處方箋</span></div>
+    <h2 class="section-title">用自然「開立」的健康處方</h2>
+    <p class="section-lede">
+      「綠色處方箋」一詞由亞東醫院攜手綠色照護聯盟相關學協會共同提出，指的是把植物、動物、戶外環境等自然生態元素，正式納入健康照護的做法——由醫療團隊評估後，「開立」以接觸自然為主的活動處方，作為藥物治療之外的輔助方案，常見於精神復健與安寧照護領域。英國的「社會處方（Social Prescribing）」則把這個概念放進基層醫療與社福體系，讓民眾被轉介去參與自然與戶外活動以改善健康，其中以自然為主的一支，被稱為 Green Social Prescribing。
+    </p>
+
+    <div class="rx-grid">
+      <div class="rx-card">
+        <div class="rx-icon-row"><span class="badge badge-forest rot-l"><svg class="icon"><use href="#i-sprout"/></svg></span><div class="rx-en">Horticultural Therapy</div></div>
+        <h4>園藝治療</h4>
+        <p class="rx-dash">運用種植與照顧植物的歷程，調節情緒、練習耐心與責任感，是綠色處方箋中最容易轉譯進教室的一支。</p>
+      </div>
+      <div class="rx-card">
+        <div class="rx-icon-row"><span class="badge badge-clay rot-r"><svg class="icon"><use href="#i-paw"/></svg></span><div class="rx-en">Animal-Assisted Therapy</div></div>
+        <h4>動物輔助療育</h4>
+        <p class="rx-dash">透過與動物的互動，同時滿足生理、心理與社會關係的需求，幼兒園版本通常會轉化為友善的動物觀察或接觸活動。</p>
+      </div>
+      <div class="rx-card">
+        <div class="rx-icon-row"><span class="badge badge-sage rot-l"><svg class="icon"><use href="#i-tree"/></svg></span><div class="rx-en">Forest Therapy</div></div>
+        <h4>森林療癒</h4>
+        <p class="rx-dash">走入林木環境，運用五感放鬆身心，對應到幼兒園就是各種形式的戶外走讀與自然步道體驗。</p>
+      </div>
+      <div class="rx-card">
+        <div class="rx-icon-row"><span class="badge badge-ochre rot-r"><svg class="icon"><use href="#i-compass"/></svg></span><div class="rx-en">Adventure Therapy</div></div>
+        <h4>冒險治療</h4>
+        <p class="rx-dash">以具備挑戰性的戶外活動培養面對困難的因應能力與自信心，呼應幼兒園的攀爬、平衡等大肌肉挑戰活動。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="care">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">02</span><span class="eyebrow-text">Green Care · 綠色照顧</span></div>
+    <h2 class="section-title">用日常「經營」的自然生活圈</h2>
+    <p class="section-lede">
+      國內學者陳惠美的文獻回顧將「綠色照顧」定義為：運用農業、園藝、動物以及各種戶外自然空間，融合健康照護的理念，讓人們透過接觸自然界中有生命與無生命的元素，促進生理、心理、社會及教育等面向的福祉、提升生活品質的一種非醫療性照顧方式。國際文獻則將 Green Care 界定為涉及植物或動物的心理、教育、社會或身體療育行為，發生的場域可以是公園、森林、花園或農場。台灣自 2020 年起由農業部與水土保持署系統性推動「農村社區綠色照顧計畫」，發展出四個核心面向。
+    </p>
+
+    <div class="quad-wrap">
+      <div class="quad-def">
+        <b>四個面向，一套可以直接借用的架構。</b><br><br>
+        這四個面向原本是為了服務農村高齡者而設計，但拆開來看，恰好對應到幼兒園可以經營的四種課程資源：場域、飲食、活動、關係。下方章節會把每一格轉譯成具體的課程點子。
+      </div>
+      <div class="quad-grid">
+        <div class="quad-cell">
+          <div class="qc-top"><span class="badge badge-forest rot-l"><svg class="icon"><use href="#i-field"/></svg></span><span class="qc-stamp">綠場域</span></div>
+          <h4>Green Field</h4>
+          <p>打造貼近自然、友善身心的活動空間，是其餘三個面向得以發生的基礎。</p>
+        </div>
+        <div class="quad-cell">
+          <div class="qc-top"><span class="badge badge-ochre rot-r"><svg class="icon"><use href="#i-bowl"/></svg></span><span class="qc-stamp">綠飲食</span></div>
+          <h4>Green Diet</h4>
+          <p>以在地、當令的食材作為共食與備餐的內涵，連結產地與餐桌的距離。</p>
+        </div>
+        <div class="quad-cell">
+          <div class="qc-top"><span class="badge badge-sage rot-l"><svg class="icon"><use href="#i-heart"/></svg></span><span class="qc-stamp">綠療育</span></div>
+          <h4>Green Healing</h4>
+          <p>透過園藝、農事等持續性活動，促進身心健康與情緒調節。</p>
+        </div>
+        <div class="quad-cell">
+          <div class="qc-top"><span class="badge badge-clay rot-r"><svg class="icon"><use href="#i-hands"/></svg></span><span class="qc-stamp">綠陪伴</span></div>
+          <h4>Green Companionship</h4>
+          <p>建立人與人、人與自然之間長期的陪伴關係，強化社會連結感。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">03</span><span class="eyebrow-text">Comparison · 兩者對照</span></div>
+    <h2 class="section-title">處方箋，還是照顧？備課時怎麼選</h2>
+    <p class="section-lede">兩者不是互斥的兩套系統，而是同一個大方向下的兩種邏輯：一個像藥單，依需求挑選單項活動；一個像生活圈，經營長期持續的日常。</p>
+
+    <div class="compare-scroll">
+      <table class="compare">
+        <thead>
+          <tr><th>面向</th><th>綠色處方箋 Green Prescription</th><th>綠色照顧 Green Care</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>起源場域</th><td>醫療院所與社福轉介系統，源自個案評估後的處方開立</td><td>農村社區與高齡照顧政策，源自長期陪伴型的照顧計畫</td></tr>
+          <tr><th>核心邏輯</th><td>依需求「開立」特定的自然介入方式，強調評估與轉介</td><td>經營一整套自然「生活圈」，強調日常持續的場域與關係</td></tr>
+          <tr><th>常見手法</th><td>園藝治療、動物輔助療育、森林療癒、冒險治療</td><td>綠場域、綠飲食、綠療育、綠陪伴四個面向</td></tr>
+          <tr><th>對幼兒園的用法</th><td>當作一份「活動處方庫」，依主題或幼兒狀態挑選單元活動</td><td>當作一份「校園規劃架構」，盤點空間、飲食、活動、關係四條線</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">04</span><span class="eyebrow-text">Why It Fits · 為何適用幼兒園</span></div>
+    <h2 class="section-title">和教保活動課程大綱六大領域的呼應</h2>
+    <p class="section-lede">兩個概念強調的身心整體照顧，其實正是幼兒園六大領域一直在做的事——只是多了一套系統化的語言，方便老師在備課時盤點自己漏掉了哪一塊。</p>
+
+    <div class="domain-grid">
+      <div class="domain-card"><span class="badge badge-sky rot-l"><svg class="icon"><use href="#i-footprints"/></svg></span><span class="dc-tag">身體動作與健康</span><h4>戶外大肌肉與感統體驗</h4><p>森林步道、攀爬、感官步道等活動，直接對應森林療癒與冒險治療的邏輯。</p></div>
+      <div class="domain-card"><span class="badge badge-ochre rot-r"><svg class="icon"><use href="#i-magnifier"/></svg></span><span class="dc-tag">認知</span><h4>觀察、探究與記錄</h4><p>照顧植物、記錄生長歷程，培養觀察、比較與預測等認知能力。</p></div>
+      <div class="domain-card"><span class="badge badge-clay rot-l"><svg class="icon"><use href="#i-speech"/></svg></span><span class="dc-tag">語文</span><h4>自然日誌與分享</h4><p>用畫圖或口說記錄與自然互動的經驗，發展敘事與表達能力。</p></div>
+      <div class="domain-card"><span class="badge badge-forest rot-r"><svg class="icon"><use href="#i-group"/></svg></span><span class="dc-tag">社會</span><h4>共同照顧與責任分工</h4><p>輪流澆水、共同備餐等任務，練習合作、分工與對生命的責任感。</p></div>
+      <div class="domain-card"><span class="badge badge-berry rot-l"><svg class="icon"><use href="#i-heart"/></svg></span><span class="dc-tag">情緒</span><h4>在自然中安頓身心</h4><p>綠療育強調的情緒調節功能，可轉化為班級的自然角落與平靜空間。</p></div>
+      <div class="domain-card"><span class="badge badge-sage rot-r"><svg class="icon"><use href="#i-palette"/></svg></span><span class="dc-tag">美感</span><h4>自然素材與五感創作</h4><p>落葉、種子、花草等自然素材，是最貼近生活的美感創作媒材。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="world" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">05</span><span class="eyebrow-text">Global Practice · 國際經驗參考</span></div>
+    <h2 class="section-title">世界各國怎麼做綠色照顧</h2>
+    <p class="section-lede">園藝治療與綠色照顧並不是單一國家的做法，而是歐美發展在先、亞洲與大洋洲各國陸續在地化的一條共同路徑。以下整理美國、歐洲、日本、韓國、澳洲五個代表性經驗，作為課程設計的靈感參考；其中澳洲的 Bush Kinder 更是直接發生在幼兒園現場的做法。</p>
+
+    <div class="country-grid">
+      <div class="country-card">
+        <div class="cc-top"><span class="badge badge-forest rot-l">US</span><span class="cc-year">since 1973</span></div>
+        <h4>美國：從退伍軍人復健到專業協會</h4>
+        <p>二戰後美國退伍軍人醫院將園藝活動導入身心復健，成效受到肯定，1973 年成立美國園藝治療協會（AHTA），是全球最早制度化園藝治療的國家，也是「治療性花園」設計的發源地。</p>
+      </div>
+      <div class="country-card">
+        <div class="cc-top"><span class="badge badge-sky rot-r">EU</span><span class="cc-year">since 1978</span></div>
+        <h4>歐洲：英國社會處方＋荷蘭照顧農場</h4>
+        <p>歐洲於 1978 年成立園藝療法協會；英國近年推動「社會處方」，由醫療與社福體系轉介民眾參與自然活動；荷蘭則發展出歷史超過百年的「學校庭園」制度，以及遍布全國、涵蓋兒童教育與高齡照顧的照顧農場（zorgboerderij）。</p>
+      </div>
+      <div class="country-card">
+        <div class="cc-top"><span class="badge badge-clay rot-l">JP</span><span class="cc-year">since 1990s</span></div>
+        <h4>日本：園藝療法研究會與農福連携</h4>
+        <p>日本自 1990 年代引進歐美園藝療法，1995 年成立日本園藝療法研究會；近年更發展出「農福連携」模式，把農業生產與福利服務結合，讓高齡者、身心障礙者與地方農業共同受益。</p>
+      </div>
+      <div class="country-card">
+        <div class="cc-top"><span class="badge badge-berry rot-r">KR</span><span class="cc-year">since 2002</span></div>
+        <h4>韓國：治癒農業與幼兒專屬方案</h4>
+        <p>韓國於 2002 年成立園藝治療協會，農村振興廳近年更系統性發展「治癒農業」，並依生命週期設計方案，其中明確包含針對一般與特殊需求幼兒的園藝、森林與動物輔助方案。</p>
+      </div>
+      <div class="country-card">
+        <div class="cc-top"><span class="badge badge-sage rot-l">AU</span><span class="cc-year">since 2010s</span></div>
+        <h4>澳洲：Bush Kinder 森林幼兒課程</h4>
+        <p>受歐洲森林學校啟發，澳洲維多利亞省自 2010 年代初期興起「Bush Kinder」，讓幼兒每週定期到鄰近的自然環境上課，並與澳洲幼兒教育課綱（EYLF）接軌；全國性的 Therapeutic Horticulture Australia（THA）則長期推動園藝治療專業化。</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-track">
+        <div class="timeline-node">
+          <div class="tn-line"><span class="badge sm badge-ochre"><svg class="icon"><use href="#i-pot"/></svg></span></div>
+          <span class="tn-year">1973</span><h5>美國</h5><p>美國園藝治療協會（AHTA）成立，制度化園藝治療的起點。</p>
+        </div>
+        <div class="timeline-node">
+          <div class="tn-line"><span class="badge sm badge-ochre"><svg class="icon"><use href="#i-pot"/></svg></span></div>
+          <span class="tn-year">1978</span><h5>歐洲</h5><p>歐洲園藝療法協會成立，各國照顧農場陸續發展。</p>
+        </div>
+        <div class="timeline-node">
+          <div class="tn-line"><span class="badge sm badge-ochre"><svg class="icon"><use href="#i-pot"/></svg></span></div>
+          <span class="tn-year">1995</span><h5>日本</h5><p>日本園藝療法研究會成立，園藝治療正式在地化。</p>
+        </div>
+        <div class="timeline-node">
+          <div class="tn-line"><span class="badge sm badge-ochre"><svg class="icon"><use href="#i-pot"/></svg></span></div>
+          <span class="tn-year">2002</span><h5>韓國</h5><p>韓國園藝治療協會成立，後續發展治癒農業政策。</p>
+        </div>
+        <div class="timeline-node">
+          <div class="tn-line"><span class="badge sm badge-ochre"><svg class="icon"><use href="#i-pot"/></svg></span></div>
+          <span class="tn-year">2010s</span><h5>澳洲</h5><p>維多利亞省 Bush Kinder 興起，森林幼兒課程接軌國家課綱。</p>
+        </div>
+        <div class="timeline-node">
+          <div class="tn-line"><span class="badge sm badge-forest"><svg class="icon"><use href="#i-sprout"/></svg></span></div>
+          <span class="tn-year">2013</span><h5>台灣</h5><p>台灣園藝輔助治療協會（THTA）成立，並於 2020 年起推動農村綠色照顧計畫。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ideas">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">06</span><span class="eyebrow-text">Practice · 課程實作點子</span></div>
+    <h2 class="section-title">依「綠色照顧」四面向展開的活動發想</h2>
+    <p class="section-lede">以下把四個面向轉譯成具體、可備課的活動方向，並標示大致適合的年齡層，實際執行仍請依班級狀況與資源調整。</p>
+
+    <div class="idea-block">
+      <div class="idea-head"><span class="badge badge-forest rot-l"><svg class="icon"><use href="#i-field"/></svg></span><h4>綠場域 · 打造班級的自然探索角</h4><span class="mono">GREEN FIELD</span></div>
+      <div class="idea-cards">
+        <div class="idea-card"><p>設置教室外或走廊的種植箱與小型堆肥區，讓照顧植物成為每日例行活動的一部分。</p><div class="age-tags"><span>3–4歲</span><span>4–5歲</span></div></div>
+        <div class="idea-card"><p>規劃一條校園或社區的自然步道路線，設計沿途的觀察與感官任務。</p><div class="age-tags"><span>4–5歲</span><span>5–6歲</span></div></div>
+        <div class="idea-card"><p>設計「五感探索角」，蒐集不同質地、氣味的自然素材供幼兒自由探索。</p><div class="age-tags"><span>2–3歲</span><span>3–4歲</span></div></div>
+      </div>
+    </div>
+
+    <div class="idea-block">
+      <div class="idea-head"><span class="badge badge-ochre rot-r"><svg class="icon"><use href="#i-bowl"/></svg></span><h4>綠飲食 · 從產地走到餐桌</h4><span class="mono">GREEN DIET</span></div>
+      <div class="idea-cards">
+        <div class="idea-card"><p>安排採收體驗，讓幼兒參與從摘採、清洗到簡易備餐的完整歷程。</p><div class="age-tags"><span>4–5歲</span><span>5–6歲</span></div></div>
+        <div class="idea-card"><p>認識當季蔬果，透過切開、觸摸、品嚐引導幼兒描述五官感受。</p><div class="age-tags"><span>3–4歲</span><span>4–5歲</span></div></div>
+        <div class="idea-card"><p>設計簡單的「產地到餐桌」故事牆，用照片或畫作記錄食材的旅程。</p><div class="age-tags"><span>4–5歲</span><span>5–6歲</span></div></div>
+      </div>
+    </div>
+
+    <div class="idea-block">
+      <div class="idea-head"><span class="badge badge-sage rot-l"><svg class="icon"><use href="#i-heart"/></svg></span><h4>綠療育 · 照顧植物，也調節情緒</h4><span class="mono">GREEN HEALING</span></div>
+      <div class="idea-cards">
+        <div class="idea-card"><p>建立班級澆水與觀察日誌，讓照顧植物成為固定且可預期的日常儀式。</p><div class="age-tags"><span>3–4歲</span><span>4–5歲</span></div></div>
+        <div class="idea-card"><p>當種植失敗或植物枯萎時，順勢引導幼兒討論失落與再嘗試的情緒歷程。</p><div class="age-tags"><span>4–5歲</span><span>5–6歲</span></div></div>
+        <div class="idea-card"><p>規劃教室裡的「安靜角」，結合自然素材與植物，作為情緒緩和的角落。</p><div class="age-tags"><span>2–3歲</span><span>3–4歲</span></div></div>
+      </div>
+    </div>
+
+    <div class="idea-block">
+      <div class="idea-head"><span class="badge badge-clay rot-r"><svg class="icon"><use href="#i-hands"/></svg></span><h4>綠陪伴 · 建立人與自然的關係</h4><span class="mono">GREEN COMPANIONSHIP</span></div>
+      <div class="idea-cards">
+        <div class="idea-card"><p>安排社區農場或動物友善場域的參訪，觀察動物並學習友善互動的距離與方式。</p><div class="age-tags"><span>4–5歲</span><span>5–6歲</span></div></div>
+        <div class="idea-card"><p>設計混齡的照顧任務，讓大班幼兒帶領小班幼兒共同照顧班級植物。</p><div class="age-tags"><span>3–6歲混齡</span></div></div>
+        <div class="idea-card"><p>邀請家長參與一次共同的種植或採收活動，把綠色照顧延伸到家園連結。</p><div class="age-tags"><span>全年齡</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="checklist" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">07</span><span class="eyebrow-text">Worksheet · 備課檢核表</span></div>
+    <h2 class="section-title">備課前，先把這六格填完</h2>
+    <p class="section-lede">把「綠色處方箋」的處方邏輯與「綠色照顧」的四面向合併成一張簡易檢核表，備課時可依序自問。</p>
+
+    <table class="check-table">
+      <thead><tr><th>規劃項目</th><th>備課提問方向</th></tr></thead>
+      <tbody>
+        <tr><td>主題與領域連結</td><td>這個活動主要對應六大領域中的哪些目標？屬於綠色照顧四面向中的哪一格？</td></tr>
+        <tr><td>自然素材與場域</td><td>需要用到哪些植物、動物或戶外空間？校園現有資源是否足夠，或需要向外借用？</td></tr>
+        <tr><td>幼兒角色與任務</td><td>幼兒在活動中要負責什麼具體任務？如何依年齡分工，讓每個孩子都有可完成的角色？</td></tr>
+        <tr><td>觀察與記錄方式</td><td>要用日誌、畫作還是照片記錄歷程？記錄的重點放在成果，還是放在歷程與情緒？</td></tr>
+        <tr><td>安全與衛生評估</td><td>是否已確認幼兒的過敏史？動物接觸、工具使用與天候風險是否已事先評估？</td></tr>
+        <tr><td>延伸與家園連結</td><td>這個活動可以怎麼延伸到下一個主題？是否有機會邀請家長一起參與？</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="safety">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">08</span><span class="eyebrow-text">Safety · 安全提醒</span></div>
+    <h2 class="section-title">開心接觸自然之前，先確認這幾件事</h2>
+
+    <div class="safety-list">
+      <div class="safety-item"><span class="badge sm badge-berry"><svg class="icon"><use href="#i-drop"/></svg></span><p><b>事先確認幼兒的過敏史</b>，包含花粉、特定植物與動物毛髮，並為個別幼兒準備替代活動方案。</p></div>
+      <div class="safety-item"><span class="badge sm badge-sky"><svg class="icon"><use href="#i-drop"/></svg></span><p><b>動物接觸活動後務必安排洗手與清潔流程</b>，並留意動物是否已完成必要的健康檢查與疫苗接種。</p></div>
+      <div class="safety-item"><span class="badge sm badge-clay"><svg class="icon"><use href="#i-shield"/></svg></span><p><b>園藝與採收工具需選用鈍化、幼兒可安全操作的款式</b>，並依人數比例安排足夠的成人陪同。</p></div>
+      <div class="safety-item"><span class="badge sm badge-sage"><svg class="icon"><use href="#i-cloud"/></svg></span><p><b>戶外活動前評估天候與場地風險</b>，包含高溫、雷雨與地面濕滑等狀況，並備妥替代室內方案。</p></div>
+      <div class="safety-item"><span class="badge sm badge-forest"><svg class="icon"><use href="#i-shield"/></svg></span><p><b>幼兒園的綠色照顧活動屬於教育推廣性質</b>，不涉及醫療評估或處方判斷；若幼兒有特殊生理心理狀況，仍應諮詢專業醫療與治療人員的意見。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="resources" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">09</span><span class="eyebrow-text">Resources · 相關網路資源</span></div>
+    <h2 class="section-title">想再深入，可以從這些連結開始</h2>
+    <p class="section-lede">依主題分類的延伸連結，方便備課時快速查找原始資料與在地實務單位。</p>
+
+    <div class="res-grid">
+      <div class="res-group">
+        <h4><span class="badge sm badge-clay"><svg class="icon"><use href="#i-leaf"/></svg></span> 台灣在地組織</h4>
+        <a class="res-link" href="http://www.thta.org.tw/content.php?id=8" target="_blank" rel="noopener">
+          <span class="badge sm badge-sage"><svg class="icon"><use href="#i-link"/></svg></span>
+          <div><div class="rl-title">臺灣園藝輔助治療協會（THTA）</div><div class="rl-desc">協會成立起源與台灣園藝治療發展脈絡</div></div>
+        </a>
+        <a class="res-link" href="https://zh.wikipedia.org/zh-tw/%E5%9C%92%E8%97%9D%E7%99%82%E6%B3%95" target="_blank" rel="noopener">
+          <span class="badge sm badge-sage"><svg class="icon"><use href="#i-book"/></svg></span>
+          <div><div class="rl-title">園藝療法｜維基百科</div><div class="rl-desc">園藝治療的定義、歷史與應用場域整理</div></div>
+        </a>
+        <a class="res-link" href="https://heho.com.tw/archives/306953" target="_blank" rel="noopener">
+          <span class="badge sm badge-sage"><svg class="icon"><use href="#i-heart"/></svg></span>
+          <div><div class="rl-title">綠色處方箋成照護新模式｜Heho健康</div><div class="rl-desc">亞東醫院與綠色照護聯盟的倡議說明</div></div>
+        </a>
+      </div>
+
+      <div class="res-group">
+        <h4><span class="badge sm badge-forest"><svg class="icon"><use href="#i-field"/></svg></span> 台灣政策與定義</h4>
+        <a class="res-link" href="https://akmp.cpc.org.tw/zh-tw/post/contents/3044" target="_blank" rel="noopener">
+          <span class="badge sm badge-forest"><svg class="icon"><use href="#i-link"/></svg></span>
+          <div><div class="rl-title">綠色照顧於高齡者之重要性｜農業資訊平台</div><div class="rl-desc">陳惠美文獻回顧的綠色照顧定義</div></div>
+        </a>
+        <a class="res-link" href="https://gc-express.org/%E7%B6%A0%E8%89%B2%E7%85%A7%E8%AD%B7%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F4%E5%A4%A7%E6%A0%B8%E5%BF%83%E4%B8%BB%E8%BB%B8%E8%88%872%E7%A8%AE%E7%B6%A0%E8%89%B2%E7%85%A7%E8%AD%B7%E8%A3%9C%E5%8A%A9%E8%A8%88/" target="_blank" rel="noopener">
+          <span class="badge sm badge-forest"><svg class="icon"><use href="#i-field"/></svg></span>
+          <div><div class="rl-title">綠色照護是什麼？4大核心主軸｜綠照得來速</div><div class="rl-desc">農村社區綠色照顧的四面向與推動時程</div></div>
+        </a>
+        <a class="res-link" href="https://www.tchar.com.tw/news-detail-3573274.html" target="_blank" rel="noopener">
+          <span class="badge sm badge-forest"><svg class="icon"><use href="#i-sprout"/></svg></span>
+          <div><div class="rl-title">綠色照顧、園藝治療、農療育比較｜光泰觀點</div><div class="rl-desc">三個相近概念的定義與差異整理</div></div>
+        </a>
+      </div>
+
+      <div class="res-group">
+        <h4><span class="badge sm badge-sky"><svg class="icon"><use href="#i-globe"/></svg></span> 國際資料</h4>
+        <a class="res-link" href="https://en.wikipedia.org/wiki/Green_care" target="_blank" rel="noopener">
+          <span class="badge sm badge-sky"><svg class="icon"><use href="#i-globe"/></svg></span>
+          <div><div class="rl-title">Green Care｜Wikipedia</div><div class="rl-desc">Green Care 一詞的國際範疇與相關條目</div></div>
+        </a>
+        <a class="res-link" href="https://doi.org/10.3390/ani7040031" target="_blank" rel="noopener">
+          <span class="badge sm badge-sky"><svg class="icon"><use href="#i-book"/></svg></span>
+          <div><div class="rl-title">Green Care 動物輔助照顧回顧文獻｜Animals 期刊</div><div class="rl-desc">國際期刊對 Green Care 農場照顧的系統性回顧</div></div>
+        </a>
+        <a class="res-link" href="https://silverliningsglobal.com/uk-society-prescription-for-healthier-happier-life/" target="_blank" rel="noopener">
+          <span class="badge sm badge-sky"><svg class="icon"><use href="#i-heart"/></svg></span>
+          <div><div class="rl-title">英國社會處方經驗｜銀享全球</div><div class="rl-desc">英國 Green Social Prescribing 的推動現況</div></div>
+        </a>
+        <a class="res-link" href="https://doi.org/10.3390/su12093811" target="_blank" rel="noopener">
+          <span class="badge sm badge-sky"><svg class="icon"><use href="#i-field"/></svg></span>
+          <div><div class="rl-title">The Care Farming Sector in The Netherlands</div><div class="rl-desc">荷蘭照顧農場的發展、教育與都市創新應用</div></div>
+        </a>
+        <a class="res-link" href="https://journals.sagepub.com/doi/10.1177/1478210317753028" target="_blank" rel="noopener">
+          <span class="badge sm badge-sky"><svg class="icon"><use href="#i-tree"/></svg></span>
+          <div><div class="rl-title">Bush kinder in Australia｜SAGE Journals</div><div class="rl-desc">澳洲維多利亞省 Bush Kinder 森林幼兒課程的個案研究</div></div>
+        </a>
+        <a class="res-link" href="https://tha.org.au/" target="_blank" rel="noopener">
+          <span class="badge sm badge-sky"><svg class="icon"><use href="#i-sprout"/></svg></span>
+          <div><div class="rl-title">Therapeutic Horticulture Australia</div><div class="rl-desc">澳洲園藝治療全國性專業組織</div></div>
+        </a>
+      </div>
+
+      <div class="res-group">
+        <h4><span class="badge sm badge-berry"><svg class="icon"><use href="#i-shield"/></svg></span> 課綱與官方文件</h4>
+        <a class="res-link" href="https://www.ftps.kh.edu.tw/upload/19/104_11351/%E5%B9%BC%E5%85%92%E5%9C%92%E6%95%99%E4%BF%9D%E6%B4%BB%E5%8B%95%E8%AA%B2%E7%A8%8B%E6%9A%AB%E8%A1%8C%E5%A4%A7%E7%B6%B1%E5%90%AB%E7%99%BC%E5%B8%83%E4%BB%A4.pdf" target="_blank" rel="noopener">
+          <span class="badge sm badge-berry"><svg class="icon"><use href="#i-shield"/></svg></span>
+          <div><div class="rl-title">幼兒園教保活動課程暫行大綱</div><div class="rl-desc">六大領域課程目標官方文件，備課對照用</div></div>
+        </a>
+        <a class="res-link" href="https://www.mhlw.go.jp/content/12200000/001653892.pdf" target="_blank" rel="noopener">
+          <span class="badge sm badge-berry"><svg class="icon"><use href="#i-paw"/></svg></span>
+          <div><div class="rl-title">農福連携の取組事例｜日本厚生労働省</div><div class="rl-desc">日本農業與福利結合的實際案例彙整</div></div>
+        </a>
+        <a class="res-link" href="https://www.nongsaro.go.kr/portal/ps/psz/psza/contentMain.ps?menuId=PS65204" target="_blank" rel="noopener">
+          <span class="badge sm badge-berry"><svg class="icon"><use href="#i-sprout"/></svg></span>
+          <div><div class="rl-title">치유농업 계획 수립｜한국 농사로</div><div class="rl-desc">韓國治癒農業的植物與動物資源規劃指引</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="refs">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num-tag">10</span><span class="eyebrow-text">References · 概念出處</span></div>
+    <h2 class="section-title">參考資料</h2>
+    <ul class="refs-list">
+      <li>亞東醫院與綠色照護聯盟相關學協會提出的「綠色處方箋」倡議，整合園藝治療、動物輔助療育、森林療癒、冒險治療等取徑</li>
+      <li>英國社會處方（Social Prescribing）年度報告中的「Green Social Prescribing」自然轉介機制</li>
+      <li>陳惠美「綠色照顧」文獻回顧，界定綠色照顧的定義與範疇</li>
+      <li>台灣農業部與水土保持署自 2020 年起推動的「農村社區綠色照顧計畫」，含綠場域、綠飲食、綠療育、綠陪伴四面向</li>
+      <li>美國、歐洲、日本、韓國園藝治療與照顧農場相關學協會發展歷程</li>
+      <li>荷蘭學校庭園制度與照顧農場（zorgboerderij）發展研究</li>
+      <li>澳洲維多利亞省 Bush Kinder 森林幼兒課程個案研究，以及 Therapeutic Horticulture Australia 全國性園藝治療組織</li>
+      <li>幼兒園教保活動課程大綱（六大領域：身體動作與健康、認知、語文、社會、情緒、美感）</li>
+    </ul>
+
+    <div class="foot-note">
+      <span>本手冊供教保服務人員備課參考，實際課程設計請依班級幼兒發展狀況與園所資源調整。</span>
+      <span class="mono">GREEN PRESCRIPTION × GREEN CARE — KINDERGARTEN REFERENCE</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

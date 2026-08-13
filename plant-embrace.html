@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>植物的擁抱｜幼兒園園藝治療美感教育手作提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2ECDB;
+    --paper-deep:#E7DDC2;
+    --card:#FBF8EF;
+    --ink:#2B3626;
+    --ink-soft:#5B6650;
+    --moss:#5C7A52;
+    --moss-deep:#38492F;
+    --clay:#AE5A32;
+    --clay-deep:#7C3E20;
+    --mustard:#C08F35;
+    --mustard-deep:#8A611E;
+    --rose:#A65552;
+    --rose-deep:#763A38;
+    --line:rgba(43,54,38,0.22);
+    --line-soft:rgba(43,54,38,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans TC","Noto Serif TC",serif;
+    line-height:1.8;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif TC","Noto Sans TC",sans-serif;}
+  a{color:var(--clay-deep);}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 56px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 88% -10%, rgba(174,90,50,0.10), transparent 55%),
+      radial-gradient(ellipse at -5% 110%, rgba(92,122,82,0.14), transparent 55%);
+  }
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-size:13px;letter-spacing:.18em;color:var(--moss-deep);
+    text-transform:uppercase;margin-bottom:22px;
+  }
+  .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--clay);}
+  .hero h1{
+    font-size:clamp(32px,5vw,54px);
+    font-weight:900;
+    margin:0 0 18px;
+    line-height:1.25;
+    color:var(--moss-deep);
+    max-width:760px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--clay-deep);
+    text-decoration:underline;
+    text-decoration-color:var(--mustard);
+    text-decoration-thickness:3px;
+    text-underline-offset:6px;
+  }
+  .hero p.lead{
+    font-size:17px;color:var(--ink-soft);max-width:600px;margin:0 0 30px;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:14px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--card);border:1px solid var(--line);
+    padding:8px 16px;border-radius:999px;font-size:13px;color:var(--ink-soft);
+  }
+  .hero-leaf{
+    position:absolute;right:-40px;top:20px;width:340px;height:340px;opacity:.9;
+    pointer-events:none;
+  }
+
+  /* ---------- Intro / framework ---------- */
+  .section{padding:56px 0;}
+  .section-head{max-width:640px;margin-bottom:34px;}
+  .section-head .kicker{
+    font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--clay-deep);font-weight:700;margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(24px,3vw,32px);color:var(--moss-deep);margin:0 0 12px;}
+  .section-head p{color:var(--ink-soft);margin:0;font-size:15.5px;}
+
+  .senses-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:16px;
+  }
+  .sense-card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px;
+  }
+  .sense-card svg{width:28px;height:28px;stroke:var(--moss-deep);margin-bottom:12px;}
+  .sense-card h3{margin:0 0 6px;font-size:16px;color:var(--moss-deep);}
+  .sense-card p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+
+  /* ---------- Timeline strip ---------- */
+  .timeline-wrap{
+    position:sticky;top:0;z-index:20;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+  .timeline-scroll{
+    display:flex;gap:8px;overflow-x:auto;padding:4px 28px;
+    scrollbar-width:thin;
+  }
+  .timeline-wrap .wrap{padding:0;}
+  .t-item{
+    flex:0 0 auto;
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    padding:8px 12px;border-radius:10px;cursor:pointer;
+    border:1px solid transparent;
+    font-size:12px;color:var(--ink-soft);
+    transition:background .15s,border-color .15s;
+    white-space:nowrap;
+  }
+  .t-item:hover{background:var(--card);}
+  .t-item.active{background:var(--card);border-color:var(--clay);color:var(--clay-deep);font-weight:700;}
+  .t-item .m{font-size:11px;letter-spacing:.05em;opacity:.75;}
+  .t-item .n{font-family:"Noto Serif TC",serif;font-size:13px;}
+
+  /* ---------- Filters ---------- */
+  .filters{
+    display:flex;flex-wrap:wrap;gap:10px;margin:0 0 40px;
+  }
+  .filter-btn{
+    font-family:inherit;font-size:13px;color:var(--ink-soft);
+    background:var(--card);border:1px solid var(--line);
+    padding:8px 15px;border-radius:999px;cursor:pointer;
+  }
+  .filter-btn.active{background:var(--moss-deep);color:#F2ECDB;border-color:var(--moss-deep);}
+  .filter-group-label{font-size:12px;color:var(--ink-soft);align-self:center;margin-right:2px;}
+
+  /* ---------- Cards ---------- */
+  .cards{display:flex;flex-direction:column;gap:22px;}
+  .card{
+    display:grid;grid-template-columns:220px 1fr;gap:0;
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;
+    scroll-margin-top:96px;
+    transition:opacity .2s;
+  }
+  .card.hidden{display:none;}
+  .card-visual{
+    background:linear-gradient(160deg,var(--paper-deep),var(--paper));
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;border-right:1px solid var(--line);
+    position:relative;
+  }
+  .card-visual svg{width:120px;height:120px;}
+  .card-visual .season-tag{
+    position:absolute;top:14px;left:14px;
+    font-size:11px;background:var(--card);border:1px solid var(--line);
+    padding:3px 9px;border-radius:999px;color:var(--ink-soft);
+  }
+  .card-body{padding:26px 28px;}
+  .card-eyebrow{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;
+  }
+  .sense-tag{
+    display:inline-flex;align-items:center;gap:5px;
+    background:var(--paper-deep);padding:3px 10px;border-radius:999px;
+    color:var(--moss-deep);font-weight:500;
+  }
+  .card h3{font-size:22px;margin:0 0 4px;color:var(--moss-deep);}
+  .card .latin{font-size:13px;color:var(--ink-soft);font-style:italic;margin:0 0 14px;}
+  .card .intro{font-size:14.5px;color:var(--ink);margin:0 0 12px;}
+  .card .link-note{
+    font-size:14px;color:var(--ink-soft);margin:0 0 18px;
+    border-left:2px solid var(--mustard);padding-left:12px;
+  }
+  .activity-box{
+    background:var(--paper);border:1px dashed var(--line);border-radius:12px;
+    padding:16px 18px;
+  }
+  .activity-box .a-title{
+    font-weight:700;color:var(--clay-deep);font-size:14.5px;margin-bottom:8px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .activity-box ol{margin:0 0 10px;padding-left:20px;font-size:13.5px;color:var(--ink);}
+  .activity-box li{margin-bottom:4px;}
+  .activity-box .note{
+    font-size:12.5px;color:var(--rose-deep);margin:0;
+    display:flex;gap:6px;align-items:flex-start;
+  }
+
+  @media (max-width:680px){
+    .card{grid-template-columns:1fr;}
+    .card-visual{border-right:none;border-bottom:1px solid var(--line);padding:26px;}
+  }
+
+  /* ---------- Footer ---------- */
+  .footer{
+    background:var(--moss-deep);color:#EFE9D6;padding:52px 0 40px;margin-top:20px;
+  }
+  .footer h2{color:#fff;font-size:22px;margin:0 0 14px;}
+  .footer p{color:#D9D6C4;font-size:14px;max-width:640px;}
+  .footer .credit{
+    margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);
+    font-size:12.5px;color:#B9C2A8;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="dot"></span>幼兒園美感教育 × 園藝治療｜備課參考資料</div>
+    <h1>植物的<em>擁抱</em><br>十五種香草與花草的手作提案</h1>
+    <p class="lead">用五感走進植物的世界。這裡整理了十五種台灣常見、容易取得的香草與花草，依原始發表月份排成一份可以按季節取用的教案靈感集，提供幼教老師規劃美感教育與感官探索活動時參考。</p>
+    <div class="hero-meta">
+      <span class="pill">🌿 15 種植物提案</span>
+      <span class="pill">🖐 五感取向活動設計</span>
+      <span class="pill">📅 依月份 / 季節編排</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">為什麼是園藝治療</div>
+      <h2>植物,是最溫柔的教材</h2>
+      <p>園藝治療強調透過與植物互動的真實身體經驗，安定情緒、練習專注，並建立與環境的連結。這份特質與幼兒美感教育所重視的「五感體驗、身體參與、在地連結」高度呼應——比起看圖卡認識植物，讓孩子親手觸摸、搓揉、聞香、觀察色彩變化，才是幼兒階段最自然的學習方式。以下依原始文章刊登月份排列，方便老師依當令植物就地取材備課。</p>
+    </div>
+    <div class="senses-grid" id="senseLegend"></div>
+  </div>
+</section>
+
+<nav class="timeline-wrap">
+  <div class="wrap">
+    <div class="timeline-scroll" id="timeline"></div>
+  </div>
+</nav>
+
+<section class="section">
+  <div class="wrap">
+    <div class="filters" id="seasonFilters"></div>
+    <div class="cards" id="cardList"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <h2>使用提醒</h2>
+    <p>活動前請教師先確認植物來源安全、無農藥噴灑，並留意個別幼兒的過敏史與感官敏感度。凡涉及食用、精油、汁液接觸的步驟，建議由教師示範或代為處理，幼兒以觀察、觸摸、聞香為主。野外採集請務必由熟悉植物的教師陪同辨識，避免誤採具刺激性或毒性的相似品種。</p>
+    <div class="credit">文字內容改寫自「城市學．植物的擁抱」專欄，作者／圖片提供：劉雨青（台北畫刊），經整理轉化為適合 2–6 歲幼兒的美感教育活動提案，僅供教師備課參考使用。原文照片版權屬原作者所有，本頁插畫為原創繪製，非原文照片之重製。更多植物分享請見作者粉專：<a href="https://www.facebook.com/plantstogether/?locale=zh_TW" target="_blank" rel="noopener" style="color:#EFE9D6;text-decoration:underline;">雨青的 kitchen garden</a></div>
+  </div>
+</footer>
+
+<script>
+const SENSES = {
+  visual:{label:"視覺",icon:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>'},
+  smell:{label:"嗅覺",icon:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3c2 0 3 2 3 4s-1 4-3 5"/><path d="M16 3c-2 0-3 2-3 4s1 4 3 5"/><path d="M6 12c0 5 3 9 6 9s6-4 6-9"/></svg>'},
+  touch:{label:"觸覺",icon:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V5a1.5 1.5 0 0 1 3 0v6"/><path d="M11 11V4a1.5 1.5 0 0 1 3 0v7"/><path d="M14 11.5V6a1.5 1.5 0 0 1 3 0v9"/><path d="M8 12c0-1-3-2-3.5-.5C3.7 13.5 6 20 11 20.5c4 .4 6-2 6-6v-3"/></svg>'},
+  taste:{label:"味覺",icon:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10c0 6 4 10 8 10s8-4 8-10"/><path d="M4 10c2-4 6-6 8-6s6 2 8 6"/></svg>'},
+  hearing:{label:"聽覺",icon:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0c0 4-2 4-2 7a2 2 0 0 1-4 0v-2a2 2 0 0 0-4 0"/></svg>'}
+};
+
+const SENSE_DESC = {
+  visual:"觀察色彩、形狀與層疊變化，培養構圖與美感直覺。",
+  smell:"搓揉葉片辨識氣味，訓練嗅覺區辨與情緒安定。",
+  touch:"觸摸葉面、纖維與汁液質地，刺激精細動作發展。",
+  taste:"在安全前提下品嚐植物滋味，連結飲食與土地記憶。",
+  hearing:"聆聽落葉、風動等自然聲響，延伸環境覺察力。"
+};
+
+const LEAF_SVG = '<svg viewBox="0 0 120 120" fill="none" stroke="#5C7A52" stroke-width="2"><path d="M60 108C30 92 18 62 26 30 50 34 72 46 84 70 92 86 84 100 60 108Z" fill="#DCE6CE" stroke="#5C7A52"/><path d="M60 108C56 84 50 58 30 34" stroke="#38492F" stroke-width="1.5"/><path d="M52 74c-8-2-14-8-16-16" stroke="#38492F" stroke-width="1.2"/><path d="M62 90c-6-4-10-10-11-18" stroke="#38492F" stroke-width="1.2"/></svg>';
+
+const ICONS = {
+  basil: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><ellipse cx="45" cy="55" rx="17" ry="24" fill="#DCE6CE" transform="rotate(-25 45 55)"/><ellipse cx="72" cy="50" rx="17" ry="24" fill="#CBDBB8" transform="rotate(15 72 50)"/><ellipse cx="60" cy="82" rx="15" ry="21" fill="#DCE6CE" transform="rotate(-5 60 82)"/><path d="M60 108V88" stroke-width="2"/><path d="M45 79V31M72 74V26M60 103V61" stroke-width="1.1"/></svg>`,
+  lemongrass: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M60 108c-2-30-14-58-26-78" /><path d="M60 108c1-34 8-62 18-84" /><path d="M60 108c-1-32 0-60 3-84" /><path d="M34 30c2 6 4 10 8 14M78 24c-2 6-5 10-9 14M63 24c1 5 2 9 1 13" stroke-width="1.2"/></svg>`,
+  herbaltea: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M32 58h48l-5 30a8 8 0 0 1-8 7H45a8 8 0 0 1-8-7l-5-30Z" fill="#DCE6CE"/><path d="M80 62c10-2 14 6 10 14-3 6-9 7-13 6" /><path d="M45 44c-3-6 1-10-2-16M58 44c-3-8 2-11-1-19M71 44c-3-6 1-10-2-16" stroke-width="1.3"/></svg>`,
+  peaceplants: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M52 110c-4-34-2-62 6-88" /><path d="M60 110c2-34 8-60 20-84" /><path d="M44 110c-8-30-10-54-4-76" /><circle cx="82" cy="30" r="8" fill="#E8CBA0"/><path d="M82 22v-8M75 27l-6-5M89 27l6-5" stroke-width="1.3"/></svg>`,
+  flowers: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.6"><g fill="#E7B24B" stroke="#8A611E"><circle cx="46" cy="42" r="12"/><circle cx="70" cy="38" r="10"/><circle cx="60" cy="60" r="11"/></g><path d="M60 71v37M60 92c-8 2-14 8-16 16M60 84c8 1 15 6 18 13" stroke="#38492F" stroke-width="1.6"/></svg>`,
+  wildveg: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M60 108C34 92 24 60 34 28c26 4 46 20 52 46 4 18-6 30-26 34Z" fill="#DCE6CE"/><path d="M60 108C50 78 42 50 34 28" stroke-width="1.3"/><path d="M44 62c-4-2-8-6-9-11M52 82c-5-1-9-5-11-10" stroke-width="1"/></svg>`,
+  camphor: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><circle cx="60" cy="46" r="30" fill="#CBDBB8"/><circle cx="40" cy="58" r="16" fill="#DCE6CE"/><circle cx="80" cy="58" r="16" fill="#DCE6CE"/><path d="M60 74v34" stroke-width="2.4"/></svg>`,
+  nativespice: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M60 110V30" stroke-width="2"/><g fill="#AE5A32" stroke="#7C3E20"><circle cx="46" cy="46" r="6"/><circle cx="74" cy="40" r="6"/><circle cx="50" cy="64" r="6"/><circle cx="72" cy="62" r="6"/><circle cx="60" cy="30" r="6"/></g></svg>`,
+  "shell-ginger": `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M52 112c-6-34-4-62 6-90" /><path d="M64 112c4-32 10-58 22-86" /><path d="M60 40c6-8 16-10 22-6-2 8-10 14-18 14-4 8-4 16 0 22" fill="#E8CBA0"/></svg>`,
+  echeveria: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.6"><g fill="#CBDBB8"><ellipse cx="60" cy="60" rx="46" ry="18" transform="rotate(0 60 60)"/><ellipse cx="60" cy="60" rx="34" ry="13"/><ellipse cx="60" cy="60" rx="22" ry="8"/><ellipse cx="60" cy="60" rx="10" ry="4"/></g></svg>`,
+  aloe: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M60 110c-6-34-16-58-34-78 16 4 28 14 34 30 4-18 14-28 28-34-10 22-14 46-10 82Z" fill="#DCE6CE"/><path d="M60 110c-2-24 2-46 10-64" stroke-width="1.2"/></svg>`,
+  plectranthus: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M60 100c-26-4-40-24-36-48 22-8 44 2 52 22 4 12-2 22-16 26Z" fill="#DCE6CE"/><circle cx="42" cy="60" r="1.6" fill="#38492F" stroke="none"/><circle cx="52" cy="70" r="1.6" fill="#38492F" stroke="none"/><circle cx="60" cy="56" r="1.6" fill="#38492F" stroke="none"/><circle cx="68" cy="68" r="1.6" fill="#38492F" stroke="none"/><circle cx="48" cy="48" r="1.6" fill="#38492F" stroke="none"/></svg>`,
+  perilla: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M60 106C30 96 22 66 38 40c8 14 20 20 22 34 2-14 14-20 22-34 16 26 8 56-22 66Z" fill="#C98E8C"/><path d="M60 106V74" stroke-width="1.3"/></svg>`,
+  houttuynia: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.8"><path d="M60 34c16 0 26 12 26 26 0 20-16 34-26 46-10-12-26-26-26-46 0-14 10-26 26-26Z" fill="#DCE6CE"/><path d="M60 60V106M60 60L46 48M60 60l14-12" stroke-width="1.2"/><g fill="#FBF8EF" stroke="#38492F"><rect x="55" y="18" width="4" height="16" rx="2"/><rect x="46" y="22" width="4" height="12" rx="2" transform="rotate(-20 48 28)"/><rect x="70" y="22" width="4" height="12" rx="2" transform="rotate(20 72 28)"/></g></svg>`,
+  mugwort: `<svg viewBox="0 0 120 120" fill="none" stroke="#38492F" stroke-width="1.6"><path d="M60 108c0-26-4-40-14-52-6 4-8 12-6 20M60 108c0-26 4-40 14-52 6 4 8 12 6 20M60 108V50" /><path d="M60 50c-8-10-10-20-6-32M60 50c8-10 10-20 6-32" /></svg>`
+};
+
+const PLANTS = [
+  {id:"basil", month:"2026-08", monthLabel:"AUG", num:"8月", season:"summer", name:"羅勒家族", latin:"九層塔・甜羅勒・打拋葉",
+   senses:["smell","touch"],
+   intro:"唇形花科的羅勒家族氣味濃烈奔放，九層塔、甜羅勒、打拋葉三種近親各有獨特香氣層次，是最容易在陽台或教室窗邊種活的香草，四季皆可採摘葉片使用。",
+   link:"讓孩子搓揉葉片、比較不同羅勒的氣味差異，是訓練嗅覺區辨力的極佳起點，也能連結到餐桌上熟悉的料理香氣。",
+   activityTitle:"「三兄弟」聞香配對",
+   steps:["摘取三種羅勒葉各一片，請幼兒輕輕搓揉後聞香。","記住氣味後，矇眼觸摸葉片形狀猜猜是哪一種。","把葉片壓印在棉布或紙上，留下香草的形狀與淡淡痕跡。"],
+   note:"部分幼兒對唇形科植物氣味較敏感，活動前可先個別試聞，避免直接靠近口鼻。"},
+
+  {id:"lemongrass", month:"2026-07", monthLabel:"JUL", num:"7月", season:"summer", name:"東南亞香料植物", latin:"檸檬香茅・假蒟・香蘭",
+   senses:["smell","touch"],
+   intro:"檸檬香茅、假蒟、香蘭是台灣家庭陽台常見的東南亞植物，葉片修長、氣味清新，適應炎熱氣候，生命力旺盛，全年都能作為香氣教材。",
+   link:"香茅葉緣較銳利，正好用來練習「輕輕地、慢慢地」觸摸的力道控制；氣味則能延伸認識異國飲食文化。",
+   activityTitle:"香茅氣味瓶",
+   steps:["將香茅葉剪成小段(教師代勞)，裝入透明小瓶讓幼兒搖一搖聞香。","比較新鮮葉片與曬乾葉片氣味的不同。","用香茅段排出簡單圖形，練習手眼協調與構圖。"],
+   note:"修剪葉片建議由教師代勞，避免銳利葉緣割傷幼兒。"},
+
+  {id:"herbaltea", month:"2026-06", monthLabel:"JUN", num:"6月", season:"summer", name:"青草茶植物", latin:"仙草・魚針草・黃花蜜菜",
+   senses:["smell","taste"],
+   intro:"台灣青草茶文化匯集多種在地藥用植物，乾燥後氣味轉為甘醇沉穩，是認識常民生活智慧與植物多樣性的入門主題。",
+   link:"聞乾燥青草的氣味差異，並觀察其外形與色澤，能建立幼兒對「植物也是生活用品」的具體連結。",
+   activityTitle:"青草氣味小盒",
+   steps:["準備幾種安全常見的乾燥香草(如洋甘菊、薄荷)分裝小盒。","引導幼兒輪流聞香，說說像什麼味道(像餅乾、像森林)。","選一種喜歡的氣味，畫下聯想到的畫面。"],
+   note:"避免讓幼兒直接飲用未經確認來源與煮沸的青草茶。"},
+
+  {id:"peaceplants", month:"2026-05", monthLabel:"MAY", num:"5月", season:"spring", name:"端午平安植物", latin:"菖蒲・芙蓉・抹草",
+   senses:["touch","smell"],
+   intro:"端午時節前後，菖蒲、芙蓉、抹草等植物因葉形特殊、氣味強烈，自古被賦予趨吉避凶的意義，是連結節氣民俗與植物特徵的好教材。",
+   link:"觀察菖蒲細長如劍的葉片、芙蓉柔軟帶絨毛的觸感，讓孩子用身體感官記住「不同植物有不同個性」。",
+   activityTitle:"我的平安小門聯",
+   steps:["認識菖蒲、芙蓉等葉片形狀，比較長短、軟硬。","用棉繩將乾燥的艾草、抹草綁成一小束香包骨架。","掛在教室門口，說說為什麼老祖先喜歡把植物掛在家門口。"],
+   note:"部分幼兒接觸菖蒲汁液可能刺激皮膚，操作後請洗手。"},
+
+  {id:"flowers", month:"2026-04", monthLabel:"APR", num:"4月", season:"spring", name:"可食花卉", latin:"金蓮花・三色堇・石竹",
+   senses:["visual","taste"],
+   intro:"金蓮花、三色堇、石竹等食用花卉色彩繽紛、花期集中在春季，是少數能連結「看得到、也吃得到」的植物種類，適合作為感官整合的主題。",
+   link:"鮮豔的花色能直接吸引幼兒的視覺注意力，親手栽種、等待開花、採收食用的完整歷程，也培養耐心與照顧責任感。",
+   activityTitle:"可食花仙子沙拉",
+   steps:["帶幼兒認識校園或社區種植的食用花卉並觀察顏色。","摘取數朵(確認來源安全、無農藥)裝飾在小點心上。","品嚐前先「用眼睛吃」，說說每種花讓人聯想到的顏色心情。"],
+   note:"務必確認花卉品種可食用且未使用農藥，來源不明的花朵僅供觀察不食用。"},
+
+  {id:"wildveg", month:"2026-03", monthLabel:"MAR", num:"3月", season:"spring", name:"台灣好野菜", latin:"龍葵・昭和草・輪傘草",
+   senses:["taste","touch"],
+   intro:"龍葵、輪傘草、昭和草等台灣原生野菜曾是常民餐桌常客，隨著現代飲食型態改變逐漸少見，卻保留了豐富的植物多樣性與土地記憶。",
+   link:"認識野菜粗糙帶絨毛的葉片觸感、略帶苦味的滋味，能拓展幼兒對「食物長什麼樣子」的想像，不再侷限於超市裡整齊的蔬菜。",
+   activityTitle:"野菜葉拓畫",
+   steps:["採集幾種野菜葉片(確認安全來源)，觀察葉脈紋路。","將顏料輕拍在葉背，壓印在紙上留下葉脈圖案。","為拓印畫命名，介紹自己認識的新植物朋友。"],
+   note:"野外採集需由熟悉植物的教師陪同，避免誤採具毒性的相似品種。"},
+
+  {id:"camphor", month:"2026-02", monthLabel:"FEB", num:"2月", season:"winter", name:"樟樹", latin:"Cinnamomum camphora",
+   senses:["smell","hearing"],
+   intro:"樟樹是台灣低海拔常見的行道樹與校園樹，樹形圓潤茂密，搓揉葉片會釋放清涼香氣，落葉時踩踏也會發出清脆聲響。",
+   link:"樟樹氣味具有安定情緒的效果，適合作為情緒角落或午休前的嗅覺活動；踩踏落葉的聲音則能延伸聽覺探索。",
+   activityTitle:"樟樹林間散步",
+   steps:["帶幼兒到校園樟樹下，撿拾落葉並搓揉聞香。","閉眼聆聽踩踏落葉、風吹樹葉的聲音。","收集乾燥樟葉裝入小布袋，做成教室角落的香氛小物。"],
+   note:"提醒幼兒不將葉片放入口中，樟樹精油成分不適合誤食。"},
+
+  {id:"nativespice", month:"2026-01", monthLabel:"JAN", num:"1月", season:"winter", name:"台灣原生辛香料", latin:"刺蔥・土肉桂・黃荊",
+   senses:["smell","touch"],
+   intro:"刺蔥、胡椒木、土肉桂、黃荊等台灣原生辛香植物，氣味濃烈奔放，是原住民族與早期先民重要的生活與祭儀植物。",
+   link:"比較不同辛香料氣味的濃、淡、辛、甜，能建立幼兒細緻的嗅覺區辨能力，也適合融入認識台灣多元文化的主題課程。",
+   activityTitle:"辛香料聞香罐",
+   steps:["準備數種安全可觸摸的原生辛香植物葉片，分別裝罐。","幼兒輪流聞香，用簡單詞彙(嗆、甜、涼)描述感受。","票選全班最喜歡的氣味，貼上笑臉貼紙。"],
+   note:"刺蔥葉背有細刺，觸摸前請教師先行處理，或僅以葉面接觸為主。"},
+
+  {id:"shell-ginger", month:"2025-11", monthLabel:"NOV", num:"11月", season:"autumn", name:"月桃", latin:"Alpinia zerumbet",
+   senses:["touch","smell"],
+   intro:"月桃是薑科植物，葉片修長強韌，原住民族與早期先民常用於編織、包裹食物，十月前後結果轉為橘紅色，相當醒目。",
+   link:"月桃葉纖維堅韌的觸感、抽取葉脈編織的過程，能訓練幼兒手部小肌肉發展，也連結傳統編織工藝的文化認識。",
+   activityTitle:"月桃葉小提籃",
+   steps:["認識月桃葉片，觸摸感受其強韌的纖維觸感。","用月桃葉包裹小石頭或黏土，練習簡單的包裹與綁繩。","分享自己包的「月桃寶」，介紹裡面藏了什麼寶物。"],
+   note:"葉片邊緣可能割手，建議教師先修剪處理過再交給幼兒操作。"},
+
+  {id:"echeveria", month:"2025-10", monthLabel:"OCT", num:"10月", season:"autumn", name:"石蓮花", latin:"Graptopetalum / Echeveria",
+   senses:["visual","touch"],
+   intro:"石蓮花外型層層疊疊如蓮花般排列，耐旱、易照顧，只需一片葉子就能發根長成新植株，生命力旺盛。",
+   link:"石蓮花規律對稱的葉片排列本身就是天然的美感教材，厚實飽滿的葉片觸感也能豐富幼兒的觸覺經驗。",
+   activityTitle:"葉片曼陀羅拼貼",
+   steps:["準備數片乾淨的石蓮花葉片，觀察形狀與層疊方式。","引導幼兒將葉片由大到小、由外而內排成圓形圖案。","拍照記錄完成的「葉片曼陀羅」，比較每個人排法的不同。"],
+   note:"排列後的葉片可插回土中發根，延續植物的生命與照顧責任。"},
+
+  {id:"aloe", month:"2025-09", monthLabel:"SEP", num:"9月", season:"autumn", name:"蘆薈", latin:"Aloe vera",
+   senses:["touch","visual"],
+   intro:"蘆薈原產於非洲乾旱地區，葉片肥厚多汁，切開後會流出透明黏滑的凝膠，是生活中常見又好照顧的植物。",
+   link:"蘆薈凝膠獨特的黏滑觸感，是幼兒少有機會接觸的觸覺經驗，能豐富感官刺激的多樣性，並認識植物儲水的生存智慧。",
+   activityTitle:"蘆薈凝膠觸摸盒",
+   steps:["教師事先切開蘆薈葉片，取出透明凝膠放入托盤。","讓幼兒用手指觸摸凝膠，說說黏滑、涼涼的感覺。","觀察蘆薈葉片切面，畫下裡面藏著的透明果凍。"],
+   note:"蘆薈汁液可能引起少數幼兒皮膚過敏，操作前建議先小範圍測試。"},
+
+  {id:"plectranthus", month:"2025-08", monthLabel:"AUG", num:"8月", season:"summer", name:"到手香", latin:"Plectranthus amboinicus",
+   senses:["smell","touch"],
+   intro:"到手香又稱左手香，是唇形花科植物，葉片肥厚多毛，搓揉後香氣濃烈持久，是台灣民間相當普及的居家藥用植物。",
+   link:"「左手比右手香」的搓揉遊戲能自然引導幼兒進行左右手概念與嗅覺專注力的練習，葉片的絨毛觸感也很特別。",
+   activityTitle:"左手右手比比香",
+   steps:["請幼兒用左手、右手各搓揉一片到手香葉片。","分別聞聞左右手的氣味，說說感覺一不一樣。","觸摸葉片表面細毛，形容摸起來的感覺(絨絨的、軟軟的)。"],
+   note:"搓揉後的汁液具刺激性，避免幼兒揉眼睛，活動後請洗手。"},
+
+  {id:"perilla", month:"2025-07", monthLabel:"JUL", num:"7月", season:"summer", name:"紫蘇", latin:"Perilla frutescens",
+   senses:["visual","taste"],
+   intro:"紫蘇葉片色彩鮮明，紅紫蘇泡水後遇酸會從暗紅轉為亮麗的粉紅色，是植物界少見的「變色魔術師」。",
+   link:"親眼見證顏色轉變的瞬間，是引發幼兒科學好奇心與美感驚喜感的絕佳素材，也能延伸認識酸鹼變化的自然現象。",
+   activityTitle:"紫蘇變色水實驗",
+   steps:["將紅紫蘇葉片泡出深紫紅色茶湯(教師操作熱水步驟)。","分裝小杯，讓幼兒滴入檸檬汁觀察顏色瞬間轉為粉紅色。","畫下顏色變化前後的樣子，說說像什麼魔法。"],
+   note:"熱水沖泡步驟由教師完成，幼兒僅參與滴檸檬汁與觀察環節。"},
+
+  {id:"houttuynia", month:"2025-06", monthLabel:"JUN", num:"6月", season:"summer", name:"魚腥草", latin:"Houttuynia cordata",
+   senses:["smell","touch"],
+   intro:"魚腥草生命力旺盛，喜歡潮濕環境，因搓揉葉片會散發特殊氣味而得名，是認識「氣味兩極」植物的有趣教材。",
+   link:"引導幼兒誠實表達「喜歡」或「不喜歡」某種氣味，是情緒表達與感官接納度練習的好機會，沒有標準答案。",
+   activityTitle:"喜歡不喜歡氣味投票",
+   steps:["摘取魚腥草葉片，輕輕搓揉後傳給每位幼兒聞香。","請幼兒誠實表達喜歡或不喜歡，貼上不同表情貼紙。","討論：為什麼同一種氣味，大家的感受不一樣？"],
+   note:"尊重每位幼兒的感官偏好，沒有標準答案，重點在表達與傾聽。"},
+
+  {id:"mugwort", month:"2025-05", monthLabel:"MAY", num:"5月", season:"spring", name:"艾草", latin:"Artemisia argyi",
+   senses:["touch","smell"],
+   intro:"艾草俗稱醫草，是端午節前後隨處可見的野生植物，葉背覆有一層細絨毛，搓揉後散發獨特草本香氣。",
+   link:"分辨艾草葉背絨毛的觸感差異，是很好的精細觸覺練習，濃烈的氣味也常與端午節慶記憶連結，適合融入節氣主題課程。",
+   activityTitle:"艾草香包 DIY",
+   steps:["認識艾草葉片，比較葉面與葉背觸感的不同。","將乾燥艾草葉裝入小布袋，綁上繩子做成香包。","掛在書包上，隨時聞聞屬於自己的艾草香。"],
+   note:"少數幼兒對艾草氣味較敏感，活動前可先個別試聞確認接受度。"}
+];
+
+const SEASON_LABEL = {summer:"夏", spring:"春", autumn:"秋", winter:"冬"};
+const SEASON_ORDER = ["all","spring","summer","autumn","winter"];
+
+function senseIconChip(key){
+  return `<span class="sense-tag">${SENSES[key].icon.replace('<svg ', '<svg style="width:13px;height:13px" ')}${SENSES[key].label}</span>`;
+}
+
+function renderLegend(){
+  const el = document.getElementById('senseLegend');
+  el.innerHTML = Object.keys(SENSES).map(k => `
+    <div class="sense-card">
+      ${SENSES[k].icon}
+      <h3>${SENSES[k].label}</h3>
+      <p>${SENSE_DESC[k]}</p>
+    </div>`).join('');
+}
+
+function renderTimeline(){
+  const el = document.getElementById('timeline');
+  el.innerHTML = PLANTS.map(p => `
+    <div class="t-item" data-id="${p.id}" onclick="jumpTo('${p.id}')">
+      <span class="m">${p.monthLabel}</span>
+      <span class="n">${p.name}</span>
+    </div>`).join('');
+}
+
+function renderFilters(){
+  const el = document.getElementById('seasonFilters');
+  el.innerHTML = '<span class="filter-group-label">依季節篩選</span>' + SEASON_ORDER.map(s => `
+    <button class="filter-btn ${s==='all'?'active':''}" data-season="${s}" onclick="filterSeason('${s}')">
+      ${s==='all' ? '全部' : SEASON_LABEL[s]}
+    </button>`).join('');
+}
+
+function renderCards(){
+  const el = document.getElementById('cardList');
+  el.innerHTML = PLANTS.map(p => `
+    <article class="card" id="${p.id}" data-season="${p.season}">
+      <div class="card-visual">
+        <span class="season-tag">${p.num}・${SEASON_LABEL[p.season]}季</span>
+        ${ICONS[p.id] || LEAF_SVG}
+      </div>
+      <div class="card-body">
+        <div class="card-eyebrow">
+          ${p.senses.map(senseIconChip).join('')}
+        </div>
+        <h3>${p.name}</h3>
+        <p class="latin">${p.latin}</p>
+        <p class="intro">${p.intro}</p>
+        <p class="link-note">${p.link}</p>
+        <div class="activity-box">
+          <div class="a-title">🌱 手作提案：${p.activityTitle}</div>
+          <ol>${p.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+          <p class="note">⚠ ${p.note}</p>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+function jumpTo(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'center'});
+  document.querySelectorAll('.t-item').forEach(t=>t.classList.remove('active'));
+  document.querySelector(`.t-item[data-id="${id}"]`).classList.add('active');
+}
+
+function filterSeason(season){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active', b.dataset.season===season));
+  document.querySelectorAll('.card').forEach(c=>{
+    c.classList.toggle('hidden', season!=='all' && c.dataset.season!==season);
+  });
+}
+
+renderLegend();
+renderTimeline();
+renderFilters();
+renderCards();
+</script>
+</body>
+</html>

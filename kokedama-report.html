@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苔玉 こけだま｜掌心裡的森林——日本苔玉專題報導</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2A2721;
+    --moss-deep:#3F4E33;
+    --moss:#6E7F4F;
+    --moss-pale:#A9B98C;
+    --moss-mist:#DCE3CB;
+    --kraft:#EFE7D3;
+    --clay:#A85A34;
+    --paper:#FBF8F0;
+    --thread:#8B7355;
+    --line:#D9D0B8;
+    --serif:'Noto Serif TC', serif;
+    --sans:'Noto Sans TC', sans-serif;
+    --maru:'Zen Maru Gothic', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.85;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--moss-deep);}
+  img{max-width:100%;display:block;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,248,240,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+  }
+  .nav-brand{
+    font-family:var(--serif); font-weight:700; font-size:1.05rem;
+    color:var(--moss-deep); letter-spacing:.04em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav-brand svg{width:20px;height:20px;flex-shrink:0;}
+  nav.nav-links{
+    display:flex; gap:22px; flex-wrap:wrap;
+  }
+  nav.nav-links a{
+    font-size:.82rem; color:var(--ink); text-decoration:none;
+    letter-spacing:.03em; opacity:.72; transition:opacity .2s, color .2s;
+    white-space:nowrap;
+  }
+  nav.nav-links a:hover{opacity:1; color:var(--clay);}
+  @media (max-width:900px){
+    nav.nav-links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; align-items:center; justify-content:center;
+    padding:80px 24px 60px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 50% 12%, #F4EFDD 0%, var(--paper) 55%);
+  }
+  .hero-grain{
+    position:absolute; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(var(--line) 1px, transparent 1px);
+    background-size:22px 22px;
+    mask-image:radial-gradient(ellipse at 50% 30%, black, transparent 72%);
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center; max-width:760px;
+  }
+  .eyebrow{
+    font-family:var(--maru); font-size:.78rem; letter-spacing:.24em;
+    color:var(--clay); text-transform:uppercase; margin-bottom:18px;
+    display:inline-block;
+  }
+  .moss-orb-wrap{ width:230px; height:230px; margin:6px 0 30px; position:relative;}
+  .moss-orb-wrap svg{width:100%;height:100%;}
+  .hero h1{
+    font-family:var(--serif); font-weight:700;
+    font-size:clamp(3.2rem, 9vw, 5.6rem);
+    margin:0; letter-spacing:.06em; color:var(--moss-deep);
+    line-height:1;
+  }
+  .hero .kana{
+    font-family:var(--maru); font-weight:500; color:var(--thread);
+    font-size:1.05rem; letter-spacing:.14em; margin:14px 0 26px;
+  }
+  .hero .lead{
+    font-size:1.02rem; color:#4A463D; max-width:600px;
+    font-weight:400;
+  }
+  .hero .sub-lede{
+    font-family:var(--serif); font-size:1.28rem; color:var(--ink);
+    margin:22px 0 14px; font-weight:600; line-height:1.6;
+  }
+  .scroll-cue{
+    margin-top:44px; font-family:var(--maru); font-size:.82rem;
+    color:var(--moss); letter-spacing:.08em;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:linear-gradient(var(--moss), transparent); animation:pulse-line 2.2s ease-in-out infinite;}
+  @keyframes pulse-line{ 0%,100%{opacity:.35;} 50%{opacity:1;} }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.report-section{
+    max-width:960px; margin:0 auto;
+    padding:96px 28px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  section.report-section:last-of-type{border-bottom:none;}
+  .sec-head{
+    display:grid; grid-template-columns:170px 1fr; gap:36px;
+    margin-bottom:38px;
+  }
+  .sec-head .eyebrow{ margin-bottom:8px; }
+  .sec-head h2{
+    font-family:var(--serif); font-size:clamp(1.7rem,3.4vw,2.35rem);
+    color:var(--moss-deep); margin:0; font-weight:700; line-height:1.35;
+  }
+  .sec-num{
+    font-family:var(--serif); font-size:.85rem; color:var(--moss);
+    letter-spacing:.1em;
+  }
+  @media (max-width:720px){
+    .sec-head{grid-template-columns:1fr;}
+  }
+  .sec-body{margin-left:0;}
+  .sec-head + .sec-body{ padding-left:206px; }
+  @media (max-width:720px){
+    .sec-head + .sec-body{padding-left:0;}
+  }
+  .sec-body p{ margin:0 0 20px; color:#3A362E; font-size:1rem; max-width:66ch;}
+  .sec-body p:last-child{margin-bottom:0;}
+
+  blockquote.pull{
+    font-family:var(--serif); font-style:italic; font-weight:600;
+    font-size:1.4rem; color:var(--clay); border-left:3px solid var(--clay);
+    padding:4px 0 4px 22px; margin:32px 0; max-width:52ch;
+  }
+
+  /* card grids */
+  .card-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:8px;
+  }
+  @media (max-width:640px){ .card-grid{grid-template-columns:1fr;} }
+  .card{
+    background:var(--kraft); border:1px solid var(--line);
+    border-radius:4px; padding:22px 24px;
+  }
+  .card h3{
+    font-family:var(--serif); font-size:1.02rem; color:var(--moss-deep);
+    margin:0 0 8px; font-weight:700;
+  }
+  .card p{margin:0; font-size:.93rem; color:#4A463D;}
+
+  /* framework mapping grid (section 4a) */
+  .map-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px; margin:10px 0 34px;
+  }
+  .map-item{
+    border:1px solid var(--moss-pale); border-left:4px solid var(--moss);
+    padding:16px 18px; background:#fff;
+  }
+  .map-item .tag{
+    font-family:var(--maru); font-size:.72rem; color:var(--moss-deep);
+    letter-spacing:.06em; display:block; margin-bottom:6px; font-weight:700;
+  }
+  .map-item p{margin:0; font-size:.88rem; color:#4A463D;}
+
+  .subhead{
+    font-family:var(--serif); font-weight:700; font-size:1.08rem;
+    color:var(--ink); margin:38px 0 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .subhead::before{
+    content:''; width:22px; height:1px; background:var(--clay); display:inline-block;
+  }
+
+  /* activity flow (4c) */
+  .flow-list{list-style:none; margin:0; padding:0; counter-reset:flow;}
+  .flow-list li{
+    counter-increment:flow;
+    display:grid; grid-template-columns:40px 1fr; gap:16px;
+    padding:14px 0; border-top:1px dashed var(--line);
+  }
+  .flow-list li:first-child{border-top:none;}
+  .flow-list li::before{
+    content:counter(flow);
+    font-family:var(--serif); font-weight:700; color:var(--clay);
+    font-size:1.1rem;
+  }
+  .flow-list strong{color:var(--moss-deep); font-family:var(--serif);}
+  .flow-list p{margin:4px 0 0; font-size:.92rem; color:#4A463D;}
+
+  /* ---------- STEPS (making) ---------- */
+  .steps-thread{ position:relative; margin-top:20px; }
+  .step-row{
+    display:grid; grid-template-columns:56px 1fr; gap:22px;
+    position:relative; padding-bottom:34px;
+  }
+  .step-row:last-child{padding-bottom:0;}
+  .step-node-col{ position:relative; display:flex; justify-content:center;}
+  .step-node{
+    width:40px; height:40px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--moss);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-weight:700; color:var(--moss-deep);
+    font-size:.95rem; z-index:2; flex-shrink:0;
+  }
+  .step-node-col::after{
+    content:''; position:absolute; top:40px; bottom:-34px; left:50%;
+    width:2px; background:repeating-linear-gradient(var(--thread) 0 6px, transparent 6px 11px);
+    transform:translateX(-50%);
+  }
+  .step-row:last-child .step-node-col::after{display:none;}
+  .step-content h3{
+    font-family:var(--serif); font-size:1.02rem; margin:6px 0 6px; color:var(--ink);
+  }
+  .step-content p{margin:0; font-size:.92rem; color:#4A463D;}
+
+  .step-note{
+    margin-top:30px; background:var(--moss-mist); border-radius:4px;
+    padding:16px 20px; font-size:.88rem; color:var(--moss-deep);
+  }
+
+  /* care / appreciation grid reuse card-grid with 2 col small */
+  .care-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:640px){.care-grid{grid-template-columns:1fr;}}
+  .care-card{border-top:3px solid var(--moss); padding-top:14px;}
+  .care-card h3{font-family:var(--serif); font-size:.98rem; margin:0 0 8px; color:var(--moss-deep);}
+  .care-card p{margin:0; font-size:.9rem; color:#4A463D;}
+
+  /* resources */
+  .res-group{margin-bottom:38px;}
+  .res-group h3{
+    font-family:var(--maru); font-size:.85rem; letter-spacing:.06em;
+    color:var(--clay); text-transform:uppercase; margin:0 0 14px;
+    border-bottom:1px solid var(--line); padding-bottom:8px;
+  }
+  .res-list{list-style:none; margin:0; padding:0; display:grid; gap:10px;}
+  .res-item{
+    border:1px solid var(--line); border-radius:4px; padding:14px 18px;
+    display:block; text-decoration:none; color:var(--ink);
+    transition:border-color .2s, background .2s;
+  }
+  .res-item:hover{border-color:var(--moss); background:#fff;}
+  .res-item .res-title{
+    font-family:var(--serif); font-weight:600; font-size:.96rem; color:var(--moss-deep);
+    display:block; margin-bottom:3px;
+  }
+  .res-item .res-domain{
+    font-family:var(--maru); font-size:.72rem; color:var(--thread); letter-spacing:.03em;
+  }
+  .res-item .res-desc{font-size:.85rem; color:#5A564C; margin-top:6px;}
+
+  footer.report-footer{
+    max-width:960px; margin:0 auto; padding:56px 28px 90px;
+    text-align:center;
+  }
+  footer.report-footer p{
+    font-size:.82rem; color:#8A8578; max-width:52ch; margin:0 auto 6px;
+  }
+  footer.report-footer .mark{
+    font-family:var(--serif); color:var(--moss); font-size:1.4rem; margin-bottom:14px;
+  }
+
+  /* reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#6E7F4F"/><circle cx="14" cy="16" r="3" fill="#3F4E33" opacity=".6"/><circle cx="25" cy="24" r="2.4" fill="#3F4E33" opacity=".5"/><circle cx="24" cy="13" r="1.8" fill="#A9B98C"/></svg>
+      苔玉專題報導
+    </div>
+    <nav class="nav-links">
+      <a href="#origin">緣起</a>
+      <a href="#development">發展</a>
+      <a href="#life">生活運用</a>
+      <a href="#kindergarten">親子手作</a>
+      <a href="#howto">製作步驟</a>
+      <a href="#care">照顧</a>
+      <a href="#appreciation">賞析</a>
+      <a href="#resources">資源連結</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">專題報導・日本生活工藝</span>
+
+    <div class="moss-orb-wrap">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <radialGradient id="mossBody" cx="38%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#8FA36A"/>
+            <stop offset="55%" stop-color="#6E7F4F"/>
+            <stop offset="100%" stop-color="#425033"/>
+          </radialGradient>
+          <clipPath id="orbClip"><circle cx="100" cy="105" r="72"/></clipPath>
+        </defs>
+        <ellipse cx="100" cy="182" rx="52" ry="8" fill="#8B7355" opacity=".18"/>
+        <circle cx="100" cy="105" r="72" fill="url(#mossBody)"/>
+        <g clip-path="url(#orbClip)" opacity=".85">
+          <circle cx="70" cy="70" r="6" fill="#3F4E33" opacity=".45"/>
+          <circle cx="120" cy="60" r="4" fill="#A9B98C" opacity=".55"/>
+          <circle cx="140" cy="100" r="7" fill="#3F4E33" opacity=".35"/>
+          <circle cx="60" cy="120" r="5" fill="#3F4E33" opacity=".4"/>
+          <circle cx="90" cy="150" r="6" fill="#A9B98C" opacity=".45"/>
+          <circle cx="130" cy="140" r="4" fill="#3F4E33" opacity=".4"/>
+          <circle cx="105" cy="95" r="3" fill="#A9B98C" opacity=".5"/>
+          <circle cx="80" cy="45" r="3.5" fill="#A9B98C" opacity=".5"/>
+          <circle cx="150" cy="130" r="3" fill="#3F4E33" opacity=".35"/>
+          <circle cx="50" cy="90" r="3" fill="#A9B98C" opacity=".45"/>
+        </g>
+        <path d="M35,95 Q100,75 165,100" stroke="#8B7355" stroke-width="2.5" fill="none" opacity=".7"/>
+        <path d="M40,140 Q100,165 160,132" stroke="#8B7355" stroke-width="2.5" fill="none" opacity=".7"/>
+        <path d="M60,50 Q100,180 145,60" stroke="#8B7355" stroke-width="2" fill="none" opacity=".5"/>
+        <path d="M50,150 Q30,168 42,180" stroke="#8B7355" stroke-width="2.5" fill="none" opacity=".8" stroke-linecap="round"/>
+        <path d="M75,25 Q68,10 55,14" stroke="#5B6B3F" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M85,22 Q90,6 104,10" stroke="#5B6B3F" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h1>苔玉</h1>
+    <div class="kana">こけだま ｜ KOKEDAMA</div>
+    <p class="sub-lede">一捧泥土、一層苔蘚、一圈細線，捏出掌心裡的森林</p>
+    <p class="lead">苔玉是日本傳統盆栽文化孕育出的生活工藝，把植物的根包進土球、裹上苔蘚，不需要花盆也能站成一座小小森林。從江戶時代文人的雅趣，到今日全球風靡的「KOKEDAMA」，苔玉走過了兩百年，如今也悄悄走進幼兒園的美感教育現場。本篇報導帶你認識苔玉的緣起與發展、生活中的各種運用，並轉化為一場能與孩子一起完成的親子手作活動，附上製作步驟、日常照顧與賞析要點，以及延伸閱讀資源。</p>
+
+    <div class="scroll-cue"><span class="line"></span>向下捲動，走進苔玉的森林</div>
+  </div>
+</section>
+
+<!-- ============ 01 ORIGIN ============ -->
+<section class="report-section reveal" id="origin">
+  <div class="sec-head">
+    <div><span class="sec-num">01</span><br><span class="eyebrow">ORIGIN</span></div>
+    <h2>緣起：從盆景到掌心的森林</h2>
+  </div>
+  <div class="sec-body">
+    <p>苔玉並非憑空出現的裝飾品，而是盆栽美學長期演變下的產物，一路可以追溯到中國歷史悠久的「盆景」文化。</p>
+    <p>盆栽的源頭是中國已有兩千多年歷史的「盆景」，於平安至鎌倉時期經由僧侶與文人傳入日本，並和神社佛閣的庭園景致相互交融，逐漸發展出屬於日本的獨特美感語彙。</p>
+    <p>江戶時代後期，喜愛山野草的文人發展出「根洗い」（ねあらい）技法——刻意讓植物的根部脫離花盆、以土包裹來展現生命力，作為欣賞植物姿態的一種方式。苔玉正是根洗い技法的簡化應用：用保水力強的介達土（ケト土）包住根部，外層纏繞苔蘚固定，讓盆栽不再受限於花器，也更貼近日常生活。</p>
+    <p>到了明治、大正時期，都市化讓居住空間愈來愈精簡，這種不需要花盆、隨處可放的迷你造景恰好呼應了都市生活的節奏，「苔玉」的形式也在這個階段逐漸定型並普及開來。</p>
+    <blockquote class="pull">一捧泥土能長成的最小森林。</blockquote>
+  </div>
+</section>
+
+<!-- ============ 02 DEVELOPMENT ============ -->
+<section class="report-section reveal" id="development">
+  <div class="sec-head">
+    <div><span class="sec-num">02</span><br><span class="eyebrow">DEVELOPMENT</span></div>
+    <h2>發展：從文人雅趣到全球苔球熱</h2>
+  </div>
+  <div class="sec-body">
+    <p>苔玉承載的其實是日本美學中的「侘寂」（わびさび）精神——在不完整、樸拙與隨時間變化的痕跡裡，看見另一種美。苔蘚會隨著季節深淺轉色，甚至偶有枯黃，這些「不完美」正是苔玉最迷人的部分，也讓它與講究工整、對稱的西方盆栽美學有著本質上的不同。</p>
+    <p>近十餘年，苔玉隨著日式生活美學、療癒經濟與極簡居家風潮一起被世界看見，在歐美常直接以羅馬拼音「KOKEDAMA」稱呼，成為園藝愛好者與室內設計師共同追捧的元素。</p>
+    <p>這股風潮也吹進了台灣：從花藝教室、選物店到假日市集，苔球（苔玉）手作課程愈來愈常見，材料行也發展出更適合新手的組合包，讓不曾接觸園藝的人也能輕鬆完成第一顆苔玉。</p>
+  </div>
+</section>
+
+<!-- ============ 03 LIFE ============ -->
+<section class="report-section reveal" id="life">
+  <div class="sec-head">
+    <div><span class="sec-num">03</span><br><span class="eyebrow">IN EVERYDAY LIFE</span></div>
+    <h2>生活運用：苔玉如何走入日常</h2>
+  </div>
+  <div class="sec-body">
+    <p>脫離花盆之後的苔玉，反而擁有更自由的展示方式，也因此發展出多元的生活場景。</p>
+    <div class="card-grid">
+      <div class="card"><h3>玄關與窗邊</h3><p>放在淺盤、木架，或以繩索懸吊於窗邊，成為進出家門的第一道綠意風景。</p></div>
+      <div class="card"><h3>茶室與和室</h3><p>依季節搭配不同花材，作為茶席、和室壁龕（床の間）的季節裝飾，呼應「一期一會」的待客心意。</p></div>
+      <div class="card"><h3>餐桌與案頭</h3><p>體積小巧、不需花盆，適合放在餐桌一角或書桌案頭，替空間注入生氣又不佔空間。</p></div>
+      <div class="card"><h3>療癒與贈禮</h3><p>捧著濕潤的土與苔蘚動手塑形的過程本身就是紓壓體驗，完成後也常被當作生日、喬遷、探病的療癒小禮。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 KINDERGARTEN ============ -->
+<section class="report-section reveal" id="kindergarten">
+  <div class="sec-head">
+    <div><span class="sec-num">04</span><br><span class="eyebrow">FOR KINDERGARTEN</span></div>
+    <h2>轉化為幼兒園親子手作：小小苔玉・森林在手心</h2>
+  </div>
+  <div class="sec-body">
+    <p>苔玉柔軟、渾圓、允許不完美的特質，其實與幼兒的手部發展和美感學習歷程非常契合。只要調整材料與流程的安全性，就能把這項日本工藝轉化為一場自然而然的親子共作活動。</p>
+
+    <div class="subhead">呼應課綱的學習圖像</div>
+    <div class="map-grid">
+      <div class="map-item"><span class="tag">美感領域</span><p>運用五官感受泥土、苔蘚的質地，並在創作與展示中練習表現與回應賞析。</p></div>
+      <div class="map-item"><span class="tag">認知領域</span><p>觀察根、土、苔三種素材的特性與變化，累積因果推理的經驗。</p></div>
+      <div class="map-item"><span class="tag">身體動作與健康領域</span><p>捏、揉、纏繞的動作，鍛鍊小肌肉與手眼協調。</p></div>
+      <div class="map-item"><span class="tag">情緒領域</span><p>透過持續澆水照顧一顆有生命的作品，練習責任感與延遲滿足。</p></div>
+      <div class="map-item"><span class="tag">社會領域</span><p>親子分工合作完成同一顆苔玉，練習輪流、協助與溝通。</p></div>
+    </div>
+
+    <div class="subhead">材料安全調整建議</div>
+    <div class="card-grid">
+      <div class="card"><h3>介質</h3><p>以無菌培養土或椰纖介質取代生土，減少接觸生土可能的髒污與細菌疑慮。</p></div>
+      <div class="card"><h3>苔蘚</h3><p>選用市售乾燥還原苔或人工水苔，避免野採苔蘚中夾帶小蟲或殘留農藥。</p></div>
+      <div class="card"><h3>固定材料</h3><p>以粗棉線、毛根（扭扭棒）取代細韌的テグス糸，方便幼兒小手抓握纏繞，收尾打結交由家長協助。</p></div>
+      <div class="card"><h3>植物選擇</h3><p>選用黃金葛、白紋草、椒草等耐旱耐陰、不具毒性與尖刺的品種，降低照顧難度與安全風險。</p></div>
+    </div>
+
+    <div class="subhead">活動流程建議（四大步驟）</div>
+    <ul class="flow-list">
+      <li><div><strong>暖身共讀</strong><p>用繪本或短片認識森林、苔蘚，引導孩子想像「如果泥土可以捧在手心，會長出什麼？」</p></div></li>
+      <li><div><strong>感官探索</strong><p>讓孩子先觸摸、觀察土壤與苔蘚的濕度、氣味、觸感，鼓勵用自己的話描述出來。</p></div></li>
+      <li><div><strong>動手創作</strong><p>親子分工：孩子負責捏土球、鋪苔蘚，家長協助纏線固定與最後塑形。</p></div></li>
+      <li><div><strong>命名與賞析</strong><p>完成後為自己的苔玉取名字，畫下今天的樣子，作為往後觀察紀錄的第一頁。</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 05 HOW TO ============ -->
+<section class="report-section reveal" id="howto">
+  <div class="sec-head">
+    <div><span class="sec-num">05</span><br><span class="eyebrow">HOW TO MAKE</span></div>
+    <h2>製作步驟：八個步驟，捏出一顆苔玉</h2>
+  </div>
+  <div class="sec-body">
+    <p>以下為完整版（大人／教師示範用）步驟；幼兒園親子活動可簡化為前一節所列的四大步驟。</p>
+    <div class="steps-thread">
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">1</div></div>
+        <div class="step-content"><h3>準備材料</h3><p>介達土（ケト土）、赤玉土、苔蘚、小苗、棉線或毛根、防水墊、噴霧器。</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">2</div></div>
+        <div class="step-content"><h3>脫盆洗根</h3><p>將小苗自花盆取出，輕輕撥鬆根部並沖淨多餘舊土，過長或腐爛的根可稍作修剪。</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">3</div></div>
+        <div class="step-content"><h3>調製基土</h3><p>介達土與赤玉土以七比三混合，一邊加水一邊搓揉，直到土壤呈現耳垂般的柔軟度。</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">4</div></div>
+        <div class="step-content"><h3>包裹塑形</h3><p>取適量基土鋪平在掌心，把植物根部放在中央，雙手將土包裹壓實，捏成網球大小的圓球。</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">5</div></div>
+        <div class="step-content"><h3>披覆苔蘚</h3><p>把事先泡軟、輕擰半乾的苔蘚攤開，像包飯糰一樣均勻覆蓋在土球外層。</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">6</div></div>
+        <div class="step-content"><h3>纏線固定</h3><p>以棉線或毛根朝不同方向纏繞約二十圈，讓苔蘚與土球緊密貼合、不易鬆脫。</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">7</div></div>
+        <div class="step-content"><h3>定型修飾</h3><p>修剪多餘苔蘚與線頭，一邊轉動苔玉一邊調整，讓球型渾圓飽滿。</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-node-col"><div class="step-node">8</div></div>
+        <div class="step-content"><h3>浸水安定</h3><p>把完成的苔玉整顆浸入水中，直到氣泡停止冒出，代表已經吸飽水分，可以安心擺放。</p></div>
+      </div>
+    </div>
+    <div class="step-note">幼兒園版小提醒：土球可事先由教師調製好半成品，讓幼兒專注在「包苔蘚」與「纏線」這兩個最有手感、也最有成就感的步驟，全程約20–30分鐘為宜。</div>
+  </div>
+</section>
+
+<!-- ============ 06 CARE ============ -->
+<section class="report-section reveal" id="care">
+  <div class="sec-head">
+    <div><span class="sec-num">06</span><br><span class="eyebrow">CARE</span></div>
+    <h2>日常照顧：讓苔玉維持翠綠的訣竅</h2>
+  </div>
+  <div class="sec-body">
+    <div class="care-grid">
+      <div class="care-card"><h3>澆水判斷</h3><p>用手掂一掂重量，比剛澆完水時明顯變輕、表面摸起來偏乾，就是該澆水的訊號。</p></div>
+      <div class="care-card"><h3>補水方式</h3><p>將整顆苔玉浸入盛水的容器，泡到氣泡停止冒出即代表吸飽水分，取出後瀝乾多餘水分再擺放。</p></div>
+      <div class="care-card"><h3>擺放位置</h3><p>選擇明亮但沒有直曬陽光的角落，並保持空氣流通，避免長時間放在空調或暖氣出風口旁。</p></div>
+      <div class="care-card"><h3>常見狀況</h3><p>苔蘚偏黃多半是日照過強或缺水；表面發霉通常是悶濕不通風；植株徒長細瘦則代表光照不足，可移到更明亮處。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 APPRECIATION ============ -->
+<section class="report-section reveal" id="appreciation">
+  <div class="sec-head">
+    <div><span class="sec-num">07</span><br><span class="eyebrow">APPRECIATION</span></div>
+    <h2>賞析：看懂苔玉裡的侘寂之美</h2>
+  </div>
+  <div class="sec-body">
+    <p>欣賞苔玉，不必用「像不像」「完不完美」的眼光。苔蘚會隨著濕度與季節轉換深淺，偶爾出現的枯黃、鬆散的邊角，都是時間留下的痕跡，也是侘寂美學所珍視的「不完整之美」。</p>
+    <p>四季的變化本身就是最好的賞析素材：春天冒出的新芽、梅雨時節蓬鬆飽水的翠綠、秋冬轉為沉穩的深色，都值得停下來多看一眼。</p>
+    <p>帶孩子賞析時，可以引導他們用感官描述取代評價——「今天摸起來比較乾還是濕？」「顏色跟上星期比起來有沒有不一樣？」讓賞析成為持續觀察生命變化的習慣，而不只是評斷好不好看。</p>
+  </div>
+</section>
+
+<!-- ============ 08 RESOURCES ============ -->
+<section class="report-section reveal" id="resources">
+  <div class="sec-head">
+    <div><span class="sec-num">08</span><br><span class="eyebrow">RESOURCES</span></div>
+    <h2>延伸閱讀與資源連結</h2>
+  </div>
+  <div class="sec-body">
+
+    <div class="res-group">
+      <h3>緣起與文化背景</h3>
+      <div class="res-list">
+        <a class="res-item" href="https://www.hanakobo.co.jp/%E8%A4%87%E8%A3%BD-valentine-2022-2" target="_blank" rel="noopener">
+          <span class="res-title">MOSS BALL｜苔玉とは</span>
+          <span class="res-domain">hanakobo.co.jp</span>
+          <p class="res-desc">說明苔玉源自盆栽「根洗い」技法，以及與中國盆景文化的脈絡關係。</p>
+        </a>
+        <a class="res-item" href="https://hotel-secondstage.com/other/387/" target="_blank" rel="noopener">
+          <span class="res-title">ホテルセカンドステージ｜苔玉とは？由来と歴史</span>
+          <span class="res-domain">hotel-secondstage.com</span>
+          <p class="res-desc">介紹苔玉與江戶時代山野草文化的由來。</p>
+        </a>
+        <a class="res-item" href="https://job-kago.com/koke/1423/" target="_blank" rel="noopener">
+          <span class="res-title">苔玉のある暮らし｜苔玉作りの歴史と文化的背景</span>
+          <span class="res-domain">job-kago.com</span>
+          <p class="res-desc">梳理根洗い技法的發展過程，以及苔玉與侘寂美學的關聯。</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <h3>生活運用與風格</h3>
+      <div class="res-list">
+        <a class="res-item" href="https://kinarino.jp/cat3/14026" target="_blank" rel="noopener">
+          <span class="res-title">キナリノ｜もふもふ、ころりん。愛らしい「苔玉」をおうちに迎えよう</span>
+          <span class="res-domain">kinarino.jp</span>
+          <p class="res-desc">居家裝飾應用、擺設風格，以及海外「KOKEDAMA」風潮的介紹。</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <h3>製作教學</h3>
+      <div class="res-list">
+        <a class="res-item" href="https://spice.kumanichi.com/lifestyle/lifestyle-feature/242783/" target="_blank" rel="noopener">
+          <span class="res-title">苔玉（こけだま）の作り方と飾り方｜専門家が解説</span>
+          <span class="res-domain">spice.kumanichi.com</span>
+          <p class="res-desc">苔玉講師監修的完整製作與擺飾方法，附初學者要點。</p>
+        </a>
+        <a class="res-item" href="https://www.komeri.com/contents/howto/html/00760.html" target="_blank" rel="noopener">
+          <span class="res-title">苔玉の作り方｜ホームセンターHowTo情報</span>
+          <span class="res-domain">komeri.com</span>
+          <p class="res-desc">材料清單與介達土、赤玉土的調配比例說明。</p>
+        </a>
+        <a class="res-item" href="https://www.bonsaimyo.com/blogs/learning/sodatekata-skill-kokedama_howto" target="_blank" rel="noopener">
+          <span class="res-title">樹種別作業｜苔玉の作り方</span>
+          <span class="res-domain">bonsaimyo.com</span>
+          <p class="res-desc">盆栽職人視角的苔玉製作示範與植物選擇建議。</p>
+        </a>
+        <a class="res-item" href="https://mossfarm.co.jp/blog/how-to-make-a-moss-ball/" target="_blank" rel="noopener">
+          <span class="res-title">初心者でも簡単にできる苔玉の作り方について</span>
+          <span class="res-domain">mossfarm.co.jp</span>
+          <p class="res-desc">新手友善的道具、材料與注意事項整理（含手部保護提醒）。</p>
+        </a>
+        <a class="res-item" href="https://www.xiabenhow.com/kokedama-moss-ball-diy-tutorial-guide/" target="_blank" rel="noopener">
+          <span class="res-title">苔球DIY完整教學｜材料製作步驟與植物照顧</span>
+          <span class="res-domain">xiabenhow.com</span>
+          <p class="res-desc">中文圖文步驟，適合台灣讀者作為入門參考。</p>
+        </a>
+        <a class="res-item" href="https://www.100.com.tw/article/9599" target="_blank" rel="noopener">
+          <span class="res-title">苔球種不活？新手必看5步驟，讓苔球綠植輕鬆養爆</span>
+          <span class="res-domain">100.com.tw</span>
+          <p class="res-desc">中文常見錯誤提醒與新手植物選擇建議。</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <h3>照顧與賞析</h3>
+      <div class="res-list">
+        <a class="res-item" href="https://www.y-michikusa.com/blog/blog/4332/" target="_blank" rel="noopener">
+          <span class="res-title">苔玉の作り方・育て方の基本について</span>
+          <span class="res-domain">y-michikusa.com</span>
+          <p class="res-desc">基礎版苔玉做法，以及日常育て方的重點提醒。</p>
+        </a>
+        <a class="res-item" href="https://www.rakuten.ne.jp/gold/nicogusa/sodatekata.htm" target="_blank" rel="noopener">
+          <span class="res-title">苔玉の育て方｜こけだまのお手入れ方法</span>
+          <span class="res-domain">rakuten.ne.jp</span>
+          <p class="res-desc">澆水時機判斷與日常管理細節，附常見苔種特性說明。</p>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="report-footer">
+  <div class="mark">◜◝</div>
+  <p>本報導整理自公開日文與中文園藝資源，並結合幼兒園教保活動課程大綱進行教學轉化，提供園內同仁美感教育課程設計參考。</p>
+  <p>製表日期：2026年8月</p>
+</footer>
+
+<script>
+  // reveal on scroll
+  const els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.08, rootMargin:'0px 0px -60px 0px'});
+    els.forEach(el=>io.observe(el));
+  } else {
+    els.forEach(el=>el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>

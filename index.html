@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>種一座幼兒園｜自然與食農備課筆記本</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --paper:#F2ECDA;
+  --paper-deep:#E7DDC2;
+  --card:#FBF8EF;
+  --ink:#2B3626;
+  --ink-soft:#5B6650;
+  --moss:#5C7A52;
+  --moss-deep:#33452B;
+  --clay:#AE5A32;
+  --clay-deep:#7C3E20;
+  --mustard:#C08F35;
+  --mustard-deep:#8A611E;
+  --line:rgba(43,54,38,0.22);
+  --line-soft:rgba(43,54,38,0.12);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans TC','Noto Sans',sans-serif;
+  font-weight:400;
+  font-size:17px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:'Noto Serif TC','Noto Serif',serif;
+  color:var(--moss-deep);
+  margin:0;
+  letter-spacing:.02em;
+}
+p{margin:0;}
+a{color:var(--clay-deep);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+/* ---------- nav ---------- */
+header.site-nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(242,236,218,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1120px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;
+}
+.nav-brand{
+  font-family:'Noto Serif TC',serif;font-weight:700;font-size:1rem;
+  color:var(--moss-deep);letter-spacing:.03em;
+  display:flex;align-items:center;gap:9px;
+}
+.nav-brand svg{width:20px;height:20px;flex:none;stroke:var(--clay);}
+.nav-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;
+  color:var(--ink-soft);
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  padding:72px 0 52px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 90% -10%, rgba(174,90,50,0.10), transparent 55%),
+    radial-gradient(ellipse at -5% 110%, rgba(92,122,82,0.14), transparent 55%);
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;letter-spacing:.16em;color:var(--clay-deep);
+  text-transform:uppercase;margin-bottom:22px;
+}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--clay);}
+.hero h1{
+  font-size:clamp(30px,4.6vw,50px);
+  font-weight:900;
+  margin:0 0 20px;
+  max-width:15ch;
+}
+.hero p.lede{
+  font-size:17.5px;color:var(--ink-soft);
+  max-width:56ch;margin:0 0 8px;
+}
+.hero .catalog-count{
+  margin-top:34px;
+  display:flex;gap:34px;flex-wrap:wrap;
+}
+.count-item{display:flex;flex-direction:column;gap:4px;}
+.count-item .n{font-family:'Noto Serif TC',serif;font-weight:700;font-size:26px;color:var(--moss-deep);}
+.count-item .l{font-size:12.5px;color:var(--ink-soft);letter-spacing:.04em;}
+
+/* ---------- section label ---------- */
+.section{padding:56px 0;}
+.section + .section{border-top:1px solid var(--line-soft);}
+.section-head{
+  display:flex;align-items:baseline;gap:16px;margin-bottom:8px;
+  flex-wrap:wrap;
+}
+.section-head .idx{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--clay-deep);
+  letter-spacing:.06em;
+}
+.section-head h2{font-size:23px;}
+.section-desc{
+  color:var(--ink-soft);font-size:15px;max-width:62ch;
+  margin:10px 0 34px;
+}
+
+/* ---------- catalog card ---------- */
+.catalog{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:22px;
+}
+.card{
+  position:relative;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:26px 24px 22px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  text-decoration:none;
+}
+.card::before{
+  content:"";
+  position:absolute;left:0;top:22px;bottom:22px;width:3px;
+  background:var(--card-accent, var(--moss));
+  border-radius:0 3px 3px 0;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 28px -18px rgba(43,54,38,0.45);
+  border-color:var(--line-soft);
+}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.card-icon{
+  width:38px;height:38px;border-radius:9px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card-accent-soft, #DDE6D3);
+  color:var(--card-accent, var(--moss));
+}
+.card-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.card-acc{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;
+  color:var(--ink-soft);white-space:nowrap;padding-top:4px;
+}
+.card h3{
+  font-size:19px;line-height:1.5;color:var(--ink);
+}
+.card .subtitle{
+  font-size:13px;color:var(--card-accent, var(--moss));
+  font-weight:500;letter-spacing:.02em;
+}
+.card p.desc{
+  font-size:14.5px;color:var(--ink-soft);line-height:1.75;flex:1;
+}
+.card .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px;}
+.tag{
+  font-size:12px;padding:3px 10px;border-radius:99px;
+  background:var(--paper-deep);color:var(--ink-soft);
+  border:1px solid var(--line-soft);
+}
+.card .open{
+  display:flex;align-items:center;gap:6px;
+  font-size:13.5px;font-weight:500;color:var(--card-accent, var(--clay-deep));
+  margin-top:6px;
+}
+.card .open svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .18s ease;}
+.card:hover .open svg{transform:translateX(3px);}
+
+/* accent variants */
+.acc-moss{--card-accent:#3F5A36;--card-accent-soft:#DCE6CF;}
+.acc-clay{--card-accent:#AE5A32;--card-accent-soft:#F0DCCB;}
+.acc-mustard{--card-accent:#8A611E;--card-accent-soft:#EFE0BD;}
+.acc-sky{--card-accent:#3E6B72;--card-accent-soft:#D6E4E4;}
+.acc-berry{--card-accent:#8C4448;--card-accent-soft:#EBD6D5;}
+
+/* ---------- how to use ---------- */
+.howto{
+  display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;
+}
+@media (max-width:760px){.howto{grid-template-columns:1fr;}}
+.howto .step{
+  border:1px dashed var(--line);border-radius:6px;padding:20px 20px 18px;
+  background:var(--paper-deep);
+}
+.howto .step .num{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--clay-deep);
+  letter-spacing:.06em;margin-bottom:10px;display:block;
+}
+.howto .step h4{font-size:15.5px;margin-bottom:8px;color:var(--ink);}
+.howto .step p{font-size:13.8px;color:var(--ink-soft);}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:30px 0 40px;
+}
+footer .foot-inner{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+}
+footer p{font-size:12.5px;color:var(--ink-soft);}
+
+@media (max-width:640px){
+  .wrap{padding:0 20px;}
+  .hero{padding:52px 0 40px;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 12 5 12 5 5C12 5 12 12 12 12Z"/><path d="M12 12C12 12 19 12 19 5C12 5 12 12 12 12Z"/></svg>
+      種一座幼兒園
+    </div>
+    <div class="nav-tag">備課筆記本 · 共 5 篇</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="dot"></span>幼教夥伴備課參考合輯</div>
+    <h1>把自然、食農與美感教育，收進同一個書架</h1>
+    <p class="lede">這裡集合了五篇關於幼兒園自然教育、食農課程與園藝美感的文章與教學紀錄，涵蓋理念、現場實作與動手提案，方便備課時依主題快速查找、對照參考。</p>
+    <div class="catalog-count">
+      <div class="count-item"><span class="n">05</span><span class="l">篇收錄文章</span></div>
+      <div class="count-item"><span class="n">03</span><span class="l">個主題分區</span></div>
+      <div class="count-item"><span class="n">01</span><span class="l">本備課筆記本</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="idx">A</span>
+      <h2>理念篇：為什麼帶孩子回到自然</h2>
+    </div>
+    <p class="section-desc">在動手做之前，先談談為什麼。這篇提出以自然作為孩子的處方箋，說明綠色照護與自然缺失如何影響幼兒發展，適合作為課程規劃前的理念鋪墊。</p>
+
+    <div class="catalog">
+      <a class="card acc-moss" href="green-care-kindergarten.html" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12"/><path d="M12 12C12 12 5 12 5 5C12 5 12 12 12 12Z"/><path d="M12 12C12 12 19 12 19 5C12 5 12 12 12 12Z"/></svg></div>
+          <span class="card-acc">NO. A-01</span>
+        </div>
+        <div>
+          <p class="subtitle">理念手冊</p>
+          <h3>自然的處方箋</h3>
+        </div>
+        <p class="desc">從綠色處方到綠色照護，整理自然對幼兒身心發展的實證與可帶入課室的觀察角度，作為食農與戶外課程設計前的理念基礎。</p>
+        <div class="tags"><span class="tag">自然缺失症</span><span class="tag">綠色照護</span><span class="tag">課程理念</span></div>
+        <div class="open">閱讀全文<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="idx">B</span>
+      <h2>現場紀錄篇：教學方案怎麼長出來</h2>
+    </div>
+    <p class="section-desc">兩篇來自真實課室的方案教學歷程，一篇是都市附幼的小田園實踐與反思，一篇是完整記錄從一片落葉到十六段探索的種植方案，適合作為課程設計架構與省思寫作的範本。</p>
+
+    <div class="catalog">
+      <a class="card acc-clay" href="chengnan-garden.html" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10l6-4 6 4v10"/><path d="M10 20v-6h4v6"/></svg></div>
+          <span class="card-acc">NO. B-01</span>
+        </div>
+        <div>
+          <p class="subtitle">教學方案紀錄</p>
+          <h3>城南一畝田</h3>
+        </div>
+        <p class="desc">南門附幼在都市校園裡開闢小田園的完整歷程，從田園城市的想像談到實踐路上的思考與反省，附有完整參考文獻，適合作為方案書寫的參考架構。</p>
+        <div class="tags"><span class="tag">都市田園</span><span class="tag">方案教學</span><span class="tag">反思書寫</span></div>
+        <div class="open">閱讀全文<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+
+      <a class="card acc-mustard" href="planting-project.html" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 20v-8"/><path d="M12 12C8 12 6 9 6 6c4 0 6 3 6 6Z"/><path d="M12 12c4 0 6-3 6-6-4 0-6 3-6 6Z"/><path d="M8 20h8"/></svg></div>
+          <span class="card-acc">NO. B-02</span>
+        </div>
+        <div>
+          <p class="subtitle">教學方案紀錄</p>
+          <h3>種東？種西？種東西！</h3>
+        </div>
+        <p class="desc">從一片落葉開始的種植方案，完整呈現學習目標、主題概念網、探索地點與十六段探索歷程，並附教師省思與學習評量，是一份可直接對照使用的方案教學全紀錄。</p>
+        <div class="tags"><span class="tag">方案源起</span><span class="tag">概念網</span><span class="tag">學習評量</span></div>
+        <div class="open">閱讀全文<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="idx">C</span>
+      <h2>動手做篇：美感提案與工藝技法</h2>
+    </div>
+    <p class="section-desc">當理念與方案架構都有了，接下來是具體可以帶進課室的手作提案。一篇整理十五種香草花草的園藝治療手作，一篇則深入介紹日本苔玉工藝，兩篇都可以直接轉化為美感教育活動。</p>
+
+    <div class="catalog">
+      <a class="card acc-berry" href="plant-embrace.html" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 21c4-1 7-4 7-9a7 7 0 0 0-14 0c0 5 3 8 7 9Z"/><path d="M12 21v-6"/></svg></div>
+          <span class="card-acc">NO. C-01</span>
+        </div>
+        <div>
+          <p class="subtitle">園藝治療教案</p>
+          <h3>植物的擁抱</h3>
+        </div>
+        <p class="desc">幼兒園園藝治療美感教育手作提案，整理十五種香草與花草的特性與手作應用，適合設計成一系列可輪替的美感角落或小組活動。</p>
+        <div class="tags"><span class="tag">園藝治療</span><span class="tag">香草花草</span><span class="tag">手作提案</span></div>
+        <div class="open">閱讀全文<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+
+      <a class="card acc-sky" href="kokedama-report.html" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/><path d="M9 3h6"/></svg></div>
+          <span class="card-acc">NO. C-02</span>
+        </div>
+        <div>
+          <p class="subtitle">專題報導</p>
+          <h3>苔玉 こけだま</h3>
+        </div>
+        <p class="desc">掌心裡的森林，深入介紹日本苔玉工藝的由來與製作技法，可作為進階版植栽美感活動的知識背景，或延伸為家長參觀日的手作示範。</p>
+        <div class="tags"><span class="tag">日本工藝</span><span class="tag">苔球製作</span><span class="tag">延伸活動</span></div>
+        <div class="open">閱讀全文<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="idx">使用</span>
+      <h2>怎麼使用這本筆記本</h2>
+    </div>
+    <div class="howto">
+      <div class="step">
+        <span class="num">STEP 1</span>
+        <h4>先讀理念，再看現場</h4>
+        <p>建議先從理念篇建立課程觀點，再參考現場紀錄篇的兩個方案架構，理解一個主題如何從發想走到評量。</p>
+      </div>
+      <div class="step">
+        <span class="num">STEP 2</span>
+        <h4>依季節挑選手作提案</h4>
+        <p>動手做篇的兩篇文章可依教室現有植物資源與季節活動需求，挑選其中一種工藝作為主題延伸或家長參觀日活動。</p>
+      </div>
+      <div class="step">
+        <span class="num">STEP 3</span>
+        <h4>交叉對照，形成自己的教案</h4>
+        <p>每篇文章都可獨立開啟，建議搭配對照，將理念、方案架構與手作提案整合成符合班級節奏的教學計畫。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <p>自然與食農教育備課筆記本 · 五篇文章彙整版</p>
+    <p class="mono">FOR 幼教夥伴備課使用</p>
+  </div>
+</footer>
+
+</body>
+</html>
